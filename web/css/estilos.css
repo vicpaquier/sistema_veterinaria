@@ -1,0 +1,18 @@
+
+.invisible {
+    display: none !important;
+}
+
+
+
+.modal { 
+  background: rgba(0, 0, 0, 0.5);
+  overflow: scroll !important;
+}
+
+.error{
+    color: red;
+}
+
+
+
