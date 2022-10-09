@@ -1,8 +1,10 @@
+.selected{
+    background-color: green;
+}
 
 .invisible {
     display: none !important;
 }
-
 
 
 .modal { 

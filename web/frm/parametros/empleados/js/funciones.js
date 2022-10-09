@@ -1,22 +1,11 @@
 
 
-function validarFormulario() {
-    var valor = true;
-    
-    if (($("#formPrograma").validate())===false){
-        valor = false;
-        $("#mensajes").html("Nombre no puede estar vacio.");
-        $("#nombre_rubro").focus();
-    }
-    return valor;
-}
-
-function buscarIdCliente() {
+function buscarIdEmpleado() {
     var datosFormulario = $("#formPrograma").serialize();
 
     $.ajax({
         type: 'POST',
-        url: 'clientes/jsp/buscarId.jsp',
+        url: '../empleados/jsp/buscarId.jsp',
         data: datosFormulario,
         dataType: 'json',
         beforeSend: function (objeto) {
@@ -24,12 +13,12 @@ function buscarIdCliente() {
         },
         success: function (json) {
             $("#mensajes").html(json.mensaje);
-            $("#idcliente").val(json.idcliente);
-            $("#nombre_cliente").val(json.nombre_cliente);
-            $("#apellido_cliente").val(json.apellido_cliente);
-            $("#celular_cliente").val(json.celular_cliente);
-            $("#ruc_cliente").val(json.ruc_cliente);
-            $("#direccion_cliente").val(json.direccion_cliente);
+            $("#idempleado").val(json.idempleado);
+            $("#nombre_empleado").val(json.nombre_empleado);
+            $("#apellido_empleado").val(json.apellido_empleado);
+            $("#celular_empleado").val(json.celular_empleado);
+            $("#ruc_empleado").val(json.ruc_empleado);
+            $("#direccion_empleado").val(json.direccion_empleado);
             if (json.nuevo === "true") {
                 $("#botonAgregar").prop('disabled', false);
                 $("#botonModificar").prop('disabled', true);
@@ -52,11 +41,11 @@ function buscarIdCliente() {
         }
     });
 }
-function buscarNombreCliente() {
+function buscarNombreEmpleado() {
     var datosFormulario = $("#formBuscar").serialize();
     $.ajax({
         type: 'POST',
-        url: 'clientes/jsp/buscarNombre.jsp',
+        url: '../empleados/jsp/buscarNombre.jsp',
         data: datosFormulario,
         dataType: 'json',
         beforeSend: function (objeto) {
@@ -67,6 +56,7 @@ function buscarNombreCliente() {
         success: function (json) {
             $("#mensajes").html(json.mensaje);
             $("#contenidoBusqueda").html(json.contenido);
+            
             $("#contenidoBusqueda").fadeIn("slow");
             
         },
@@ -79,68 +69,68 @@ function buscarNombreCliente() {
         }
     });
 }
-function agregarCliente() {
+function agregarEmpleado() {
     var datosFormulario = $("#formPrograma").serialize();
     
     
     $.ajax({
         type: 'POST',
-        url: 'clientes/jsp/agregar.jsp',
+        url: '../empleados/jsp/agregar.jsp',
         data: datosFormulario,
         dataType: 'json',
         beforeSend: function (objeto) {
             $("#mensajes").html("Enviando datos al Servidor ...");
+            //validarFormulario();
         },
         success: function (json) {
             $("#mensajes").html(json.mensaje);
             limpiarFormulario();
-            $("#id_cliente").focus();
-            $("#id_cliente").select();
-            $('#myModal').modal('hide');
-            //$.notify("Datos agregadosasd", "success");
-            
+            $("#id_empleado").focus();
+            $("#id_empleado").select();
+            $.notify("Agregado correctamente", "success");
         },
         error: function (e) {
             $("#mensajes").html("No se pudo modificar los datos.");
+            $.notify("No se pudo agregar", "error");
         },
         complete: function (objeto, exito, error) {
-            $("#id_cliente").focus();
+            $("#id_empleado").focus();
         }
     });
 }
-function modificarCliente() {
+function modificarEmpleado() {
     var datosFormulario = $("#formPrograma").serialize();
     $.ajax({
         type: 'POST',
-        url: 'clientes/jsp/modificar.jsp',
+        url: '../empleados/jsp/modificar.jsp',
         data: datosFormulario,
         dataType: 'json',
         beforeSend: function (objeto) {
             $("#mensajes").html("Enviando datos al Servidor ...");
         },
         success: function (json) {
-            $("#mensajes").html(json.mensaje);
+            $.notify("Modificado correctamente", "success");
             //limpiarFormulario();
           $("#nombre_rubro").focus();
         },
         error: function (e) {
-            $("#mensajes").html("No se pudo modificar los datos.");
+            $.notify("No se pudo modificar", "error");
         },
         complete: function (objeto, exito, error) {
 
         }
     });
 }
-function eliminarCliente() {
+function eliminarEmpleado() {
     var datosFormulario = $("#formTabla").serialize();
     
     $.ajax({
         type: 'POST',
-        url: 'clientes/jsp/eliminar.jsp',
+        url: '../empleados/jsp/eliminar.jsp',
         data: datosFormulario,
         dataType: 'json',
         beforeSend: function (objeto) {
-            $("#mensajes").html("Enviando datos al Servidor ...");
+            //$.notify("Enviando datos al servidor", "success");
             
         },
         success: function (json) {
@@ -149,10 +139,13 @@ function eliminarCliente() {
             limpiarFormulario();
             $("#id_rubro").focus();
             $("#id_rubro").select();
+            $.notify("Borrado correctamente", "success");
+            
 
         },
         error: function (e) {
             $("#mensajes").html("No se pudo modificar los datos.");
+            $.notify("Error del servidor", "error");
         },
         complete: function (objeto, exito, error) {
             if (exito === "success") {
@@ -161,119 +154,39 @@ function eliminarCliente() {
     });
 }
 
-function eliminarMascota() {
-    var datosFormulario = $("#formPrograma").serialize();
-    
-    $.ajax({
-        type: 'POST',
-        url: 'clientes/jsp/eliminarMascota.jsp',
-        data: datosFormulario,
-        dataType: 'json',
-        beforeSend: function (objeto) {
-            $("#mensajes").html("Enviando datos al Servidor ...");
-            
-        },
-        success: function (json) {
-            $("#mensajes").html(json.mensaje);
-            
-            limpiarFormulario();
-            $("#id_rubro").focus();
-            $("#id_rubro").select();
 
-        },
-        error: function (e) {
-            $("#mensajes").html("No se pudo modificar los datos.");
-        },
-        complete: function (objeto, exito, error) {
-            if (exito === "success") {
-            }
-        }
-    });
-}
-    function validarForm1(){
-                var validacion = $("#formPrograma").validate();
-                $("#botonCancelar").click(function(){
-                       validacion.destroy(); 
-                });
-                
-                $("#botonCerrarModal1").click(function(){
-                       validacion.destroy(); 
-                });
-}
+
 
 function limpiarFormulario() {
 
-    //$("#idclientess").val("0");
-    $("#nombre_cliente").val("");
-    $("#apellido_cliente").val("");
-    $("#celular_cliente").val("");
-    $("#ruc_cliente").val("");
-    $("#direccion_cliente").val("");
+    //$("#idempleadoss").val("0");
+    $("#nombre_empleado").val("");
+    $("#apellido_empleado").val("");
+    $("#celular_empleado").val("");
+    $("#ruc_empleado").val("");
+    $("#direccion_empleado").val("");
     
 }
 
-function buscarNombreMascota() {
-    var datosFormulario = $("#formPrograma").serialize();
-    $.ajax({
-        type: 'POST',
-        url: 'clientes/jsp/buscarNombreMascota.jsp',
-        data: datosFormulario,
-        dataType: 'json',
-        beforeSend: function (objeto) {
-            $("#mensajes").html("Enviando datos al Servidor ...");
-            $("#contenidoBusquedaMascota").css("display", "none");
-        },
-        success: function (json) {
-            $("#mensajes").html(json.mensaje);
-            $("#contenidoBusquedaMascota").html(json.contenido);
-            $("#contenidoBusquedaMascota").fadeIn("slow");
-        },
-        error: function (e) {
-            $("#mensajes").html("No se pudo buscar registros.");
-        },
-        complete: function (objeto, exito, error) {
-            if (exito === "success") {
-            }
-        }
+
+
+function validarForm1(){
+    var validacion = $("#formPrograma").validate();
+    $("#botonCancelar").click(function(){
+        validacion.destroy(); 
+    });
+                
+    $("#botonCerrarModal1").click(function(){
+        validacion.destroy(); 
     });
 }
-
-function agregarMascota() {
-    var datosFormulario = $("#formProgramaMascota").serialize();
-    
-    //alert(datosFormulario);
-    $.ajax({
-        type: 'POST',
-        url: 'clientes/jsp/agregarMascota.jsp',
-        data: datosFormulario,
-        dataType: 'json',
-        beforeSend: function (objeto) {
-            $("#mensajes").html("Enviando datos al Servidor ...");
-            
-            alert(datosFormulario);
-        },
-        success: function (json) {
-            $("#mensajes").html(json.mensaje);
-            limpiarFormulario();
-            $("#id_cliente").focus();
-            $("#id_cliente").select();
-        },
-        error: function (e) {
-            $("#mensajes").html("No se pudo modificar los datos.");
-        },
-        complete: function (objeto, exito, error) {
-            $("#id_cliente").focus();
-        }
-    });
-}
-
 
 function generarId() {
     var datosFormulario = $("#formPrograma").serialize();
     
     $.ajax({
         type: 'POST',
-        url: 'clientes/jsp/generarId.jsp',
+        url: '../empleados/jsp/generarId.jsp',
         data: datosFormulario,
         dataType: 'json',
         beforeSend: function (objeto) {
@@ -282,9 +195,9 @@ function generarId() {
         },
         success: function (json) {
             limpiarFormulario();
-            $("#nombre_cliente").focus();
-            $("#nombre_cliente").select();
-            $("#idcliente").val(json.contenido);
+            $("#nombre_empleado").focus();
+            $("#nombre_empleado").select();
+            $("#idempleado").val(json.contenido);
 
         },
         error: function (e) {

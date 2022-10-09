@@ -1,29 +1,27 @@
 
-<%@page import="controladores.ClientesControlador"%>
-<%@page import="modelos.Clientes"%>
+<%@page import="controladores.EmpleadosControlador"%>
+<%@page import="modelos.Empleados"%>
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="java.sql.ResultSet"%>
 <%
-    int idcliente = Integer.parseInt(request.getParameter("idcliente"));
-    String nombre_cliente = request.getParameter("nombre_cliente");
-    String apellido_cliente = request.getParameter("apellido_cliente");
-    String celular_cliente = request.getParameter("celular_cliente");
-    String direccion_cliente = request.getParameter("direccion_cliente");
-    String ruc_cliente = request.getParameter("ruc_cliente");
+    int idempleado = Integer.parseInt(request.getParameter("idempleado"));
+    String nombre_empleado = request.getParameter("nombre_empleado");
+    String apellido_empleado = request.getParameter("apellido_empleado");
+    String celular_empleado = request.getParameter("celular_empleado");
+    String ruc_empleado = request.getParameter("ruc_empleado");
     
     String tipo = "error";
     String mensaje = "Datos no modificados.";
     
-    Clientes cliente = new Clientes();
+    Empleados empleado = new Empleados();
     
-    cliente.setIdcliente(idcliente);
-    cliente.setNombre_cliente(nombre_cliente);
-    cliente.setApellido_cliente(apellido_cliente);
-    cliente.setCelular_cliente(celular_cliente);
-    cliente.setDireccion_cliente(direccion_cliente);
-    cliente.setRuc_cliente(ruc_cliente);
+    empleado.setIdempleado(idempleado);
+    empleado.setNombre_empleado(nombre_empleado);
+    empleado.setApellido_empleado(apellido_empleado);
+    empleado.setCelular_empleado(celular_empleado);
+    empleado.setRuc_empleado(ruc_empleado);
     
-    if (ClientesControlador.modificar(cliente)) {
+    if (EmpleadosControlador.modificar(empleado)) {
         tipo = "success";
         mensaje = "Datos modificados.";
     }

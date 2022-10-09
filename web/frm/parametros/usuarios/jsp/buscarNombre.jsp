@@ -1,16 +1,15 @@
 
 
-<%@page import="controladores.ClientesControlador"%>
+<%@page import="controladores.UsuariosControlador"%>
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="java.sql.ResultSet"%>
 <%
-    String nombre_mascota = request.getParameter("bcli_nombre");
-    String idcliente = request.getParameter("idcliente");
+    String cli_nombre = request.getParameter("bcli_nombre");
     int pagina = 1;
     
     
     String mensaje = "Búsqueda exitosa.";
-    String contenido = ClientesControlador.buscarNombreMascota(nombre_mascota, pagina, idcliente);
+    String contenido = UsuariosControlador.buscarNombre(cli_nombre, pagina);
     
     JSONObject obj = new JSONObject();
     obj.put("mensaje",mensaje);

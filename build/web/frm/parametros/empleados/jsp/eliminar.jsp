@@ -1,20 +1,20 @@
 
 
-<%@page import="controladores.ClientesControlador"%>
-<%@page import="modelos.Clientes"%>
+<%@page import="controladores.EmpleadosControlador"%>
+<%@page import="modelos.Empleados"%>
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="java.sql.ResultSet"%>
 <%
-    int idcliente = Integer.parseInt(request.getParameter("inputid"));
+    int idempleado = Integer.parseInt(request.getParameter("inputid"));
 
-    System.out.println(idcliente);
+    System.out.println(idempleado);
     String tipo = "error";
     String mensaje = "Datos no eliminados.";
     
-    Clientes cliente = new Clientes();
-    cliente.setIdcliente(idcliente);
+    Empleados empleado = new Empleados();
+    empleado.setIdempleado(idempleado);
     
-    if (ClientesControlador.eliminar(cliente)) {
+    if (EmpleadosControlador.eliminar(empleado)) {
         tipo = "success";
         mensaje = "Datos eliminados.";
     }

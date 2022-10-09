@@ -1,6 +1,6 @@
 
 
-<%@page import="controladores.ClientesControlador"%>
+<%@page import="controladores.EmpleadosControlador"%>
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="java.sql.ResultSet"%>
 <%
@@ -9,7 +9,7 @@
     
     
     String mensaje = "Búsqueda exitosa.";
-    String contenido = ClientesControlador.buscarNombre(cli_nombre, pagina);
+    String contenido = EmpleadosControlador.buscarNombre(cli_nombre, pagina);
     
     JSONObject obj = new JSONObject();
     obj.put("mensaje",mensaje);

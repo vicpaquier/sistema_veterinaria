@@ -1,16 +1,16 @@
 
 
-<%@page import="controladores.ClientesControlador"%>
-<%@page import="modelos.Clientes"%>
+<%@page import="controladores.EmpleadosControlador"%>
+<%@page import="modelos.Empleados"%>
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="java.sql.ResultSet"%>
 <%
    
     
-    Clientes cliente = new Clientes();
-    //cliente.setIdmascota(idmascota);
+    Empleados empleado = new Empleados();
+    //empleado.setIdmascota(idmascota);
     
-    String contenido = ClientesControlador.generarIdcliente();
+    String contenido = EmpleadosControlador.generarIdempleado();
    
     
     JSONObject obj = new JSONObject();
