@@ -22,7 +22,9 @@
         <header>
             <!-- barra de navegación -->
             <nav class="pr-1 navbar navbar-expand-lg navbar-light " style="background-color: #55efc4;">
-                <a class="navbar-brand" href="index.html">Sistema</a>
+                <a class="navbar-brand" href="menu.html">
+                    <img src="../../../imagenes/logo-menu.png" width="190" height="40" alt="logo">
+                </a>
                 <button class="mr-1 navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -31,28 +33,37 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="../../../index.html">Inicio </a>  
+                            <a class="nav-link" href="../../../menu.html">Inicio </a>  
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../clientes/clientes.html">Clientes</a>
                         </li>
-                        <li class="nav-item active">
+                        <li class="nav-item ">
                             <a class="nav-link" href="../empleados/empleados.html">Empleados</a>
+                        </li>
+                        <li class="nav-item  active">
+                            <a class="nav-link" href="../usuarios/usuarios.html">Usuarios</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../servicios/servicios.html">Servicios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../usuarios/usuarios.html">Usuarios</a>
+                            <a class="nav-link" href="../facturacion/facturacion.html">Facturación</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../facturacion/facturacion.html">Facturacion</a>
-                        </li>
-                        <li class="nav">
-                            <p class="my-auto align-content-end">User</p>
+                            <a class="nav-link" href="../agendamientos/agendamientos.html">Agendamientos</a>
                         </li>
                     </ul>
-
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                               role="button">Salir <span id="susuario_usuario"></span><span class="caret">
+                                </span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="../../../index.html">Salir</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </nav>
         </header>
@@ -133,7 +144,7 @@
 
                             <!-- Tabla empleados-->
 
-                            <div class="table-responsive " id="resultadoMascotas">
+                            <!--div class="table-responsive " id="resultadoMascotas">
                                 <table id="tablaMascota" class="table ">
                                     <thead>
                                         <tr>
@@ -153,7 +164,7 @@
                                     <button type="submit" id="botonAgregar" class="btn btn-success">Guardar</button>
                                     <button type="submit" id="botonModificar" class="btn btn-primary invisible">Modificar</button>
                                 </div>
-                            </div>
+                            </div-->
 
                         </div>
                     </div>
@@ -203,6 +214,58 @@
                 </div>
             </div>
         </div>
+        
+        <!--modal empleados-->
+        <div class="modal fade" id="myModal2"  data-keyboard="false" tabindex="-1"
+             aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel1">Seleccionar Servicios</h5>
+                        <button type="button" class="close" id="botonCerrarModal1" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!--buscador servicios-->
+                        <form id="formBuscar" class="row my-3">
+                            <input type="hidden"  id="bpagina" name="bpagina" value="1" />
+
+
+                            <div class="input-group col-12  ml-auto">
+                                <input type="text" class="form-control invisible" id="bcli_descripcion" name="bcli_descripcion" placeholder="Buscar servicios">
+                                
+                            </div>
+                        </form>
+                        <form id="formTabla" hidden>
+                            <input type="text" id="inputid" name="inputid">
+                        </form>
+                        <!--tabla servicios-->
+                        <input type="text" class="col" id="myInput2" onkeyup="myFunctionServicio()" placeholder="Buscar por clientes..">
+                        <div class="table-responsive " id="resultadoMascotas">
+                                <table id="tablaMascota" class="table ">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" class="text-center">ID</th>
+                                            <th scope="col" class="text-center">Nombre</th>
+                                            <th scope="col" class="text-center">Apellido</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="contenidoBusquedaEmpleados">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="modal-footer form-row">
+                            <!--                            <div class="form-group align-content-end">
+                                                            <button type="button" id="botonCancelar" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                                                        </div>-->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
         <!--jquery-->
@@ -220,57 +283,9 @@
         <script src="js/funciones.js" ></script>
         <script src="../../../js/bootstrap.bundle.min.js"></script>
 
-        <!--datetables cdn-->
-        <script src="../../../js/datatables.js"></script>
+        
         <script>
-            $.extend(true, $.fn.dataTable.defaults, {
-                "language": {
-                    "decimal": ",",
-                    "thousands": ".",
-                    "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                    "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                    "infoPostFix": "",
-                    "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-                    "loadingRecords": "Cargando...",
-                    "lengthMenu": "Mostrar _MENU_ registros",
-                    "paginate": {
-                        "first": "Primero",
-                        "last": "Último",
-                        "next": "Siguiente",
-                        "previous": "Anterior"
-                    },
-                    "processing": "Procesando...",
-                    "search": "Buscar:",
-                    "searchPlaceholder": "Término de búsqueda",
-                    "zeroRecords": "No se encontraron resultados",
-                    "emptyTable": "Ningún dato disponible en esta tabla",
-                    "aria": {
-                        "sortAscending": ": Activar para ordenar la columna de manera ascendente",
-                        "sortDescending": ": Activar para ordenar la columna de manera descendente"
-                    },
-                    //only works for built-in buttons, not for custom buttons
-                    "buttons": {
-                        "create": "Nuevo",
-                        "edit": "Cambiar",
-                        "remove": "Borrar",
-                        "copy": "Copiar",
-                        "csv": "fichero CSV",
-                        "excel": "tabla Excel",
-                        "pdf": "documento PDF",
-                        "print": "Imprimir",
-                        "colvis": "Visibilidad columnas",
-                        "collection": "Colección",
-                        "upload": "Seleccione fichero...."
-                    },
-                    "select": {
-                        "rows": {
-                            _: '%d filas seleccionadas',
-                            0: 'clic fila para seleccionar',
-                            1: 'una fila seleccionada'
-                        }
-                    }
-                }
-            });
+            
             buscarNombreUsuario();
             buscarNombreEmpleado();
             $(document).ready(function () {
@@ -282,6 +297,22 @@
 
 
 //            abrir modal para agregar usuarios
+
+$("#nombre_empleado").click(function(){
+    $("#myModal2").modal('show');
+    $('#tablaMascota tbody').on('click', 'tr', function () {
+                    
+                    var rowId = event.target.parentNode.id;
+                    var data = document.getElementById(rowId).querySelectorAll(".row-data");
+                    var id = data[0].innerHTML;
+                    var nombre = data[1].innerHTML + " " + data[2].innerHTML;
+                    $("#idempleado").val(id);
+                    $("#nombre_empleado").val(nombre);
+                    $("#myModal2").modal('hide');
+                    //alert('You clicked on ' + data[1] + "'s row");
+                });
+    
+});
             $("#abrirModalUsuario").on('click', function () {
                 
                 validarForm1();
@@ -293,17 +324,8 @@
                 limpiarFormulario();
                 generarId();
 
-                var table = $('#tablaMascota').DataTable({
-
-                    
-                });
-                $('#tablaMascota tbody').on('click', 'tr', function () {
-                    $(this).addClass("selected");
-                    var data = table.row(this).data();
-                    $("#idempleado").val(data[0]);
-                    $("#nombre_empleado").val(data[1]);
-                    //alert('You clicked on ' + data[1] + "'s row");
-                });
+                
+                
                 $("#myModal1").modal('show');
                 $('#myModal1').modal('handleUpdate');
             });
@@ -411,7 +433,27 @@
 
             }
 
+            function myFunctionServicio() {
+                // Declare variables
+                var input, filter, table, tr, td, i, txtValue;
+                input = document.getElementById("myInput2");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("tablaMascota");
+                tr = table.getElementsByTagName("tr");
 
+                // Loop through all table rows, and hide those who don't match the search query
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[1];
+                    if (td) {
+                        txtValue = td.textContent || td.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
 
 
 //            abrir más de dos modales

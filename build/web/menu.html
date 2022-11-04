@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="imagenes/Sin título-3.png"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+        <link href="css/estilos.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="styles.css">
+        <title>Sistema Veterinaria</title>
+    </head>
+    <body>
+        <!-- barra de navegación -->
+        <header>
+            <!-- barra de navegación -->
+            <nav class="pr-1 navbar navbar-expand-lg navbar-light " style="background-color: #54efc3;">
+                <a class="navbar-brand" href="menu.html">
+                    <img src="imagenes/logo-menu.png" width="190" height="40" alt="logo">
+                </a>
+
+
+                <button class="mr-1 navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+
+                </button>
+                <a href="frm/parametros/clientes/clientes.html"></a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="../../../menu.html">Inicio </a>  
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="frm/parametros/clientes/clientes.html">Clientes</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="frm/parametros/empleados/empleados.html">Empleados</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="frm/parametros/servicios/servicios.html">Servicios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="frm/parametros/usuarios/usuarios.html">Usuarios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="frm/parametros/agendamientos/agendamientos.html">Agendamientos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="frm/parametros/facturacion/facturacion.html">Facturación</a>
+                        </li>
+                        
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                               role="button"><span id="susuario_usuario"></span><span class="caret">
+                                </span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="index.html">Salir</a></li>
+
+                            </ul>
+                        </li>
+                    </ul>
+
+                </div>
+            </nav>
+        </header>
+        <form id="formAcceso">
+            <input type="text" id="valor">
+        </form>
+        <p id="contenido"> contenido</p>
+        <div class="container">
+            <div class="row">
+                <div class="card col-6">
+                    <img src="img_avatar.png" alt="Avatar" style="width:100%">
+                    <div class="container">
+                        <h4><b>John Doe</b></h4>
+                        <p>Architect & Engineer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="js/jquery-3.6.0.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js" ></script>
+        <script src="js/funciones.js"></script>
+        <script>
+            verificarSesion();
+            $(document).ready(function () {
+                //verificar citas vencidas
+                verificarAgenda();
+            });
+
+        </script>
+    </body>
+</html>

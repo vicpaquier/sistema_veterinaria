@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="../../../imagenes/Sin título-3.png"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
         <link href="../../../css/estilos.css" rel="stylesheet" type="text/css"/>
         <link href="../../../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
@@ -16,7 +17,9 @@
         <header>
             <!-- barra de navegación -->
             <nav class="pr-1 navbar navbar-expand-lg navbar-light " style="background-color: #55efc4;">
-                <a class="navbar-brand" href="index.html">Sistema</a>
+                <a class="navbar-brand" href="menu.html">
+                    <img src="../../../imagenes/logo-menu.png" width="190" height="40" alt="logo">
+                </a>
                 <button class="mr-1 navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -25,44 +28,60 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="../../../index.html">Inicio </a>  
+                            <a class="nav-link" href="../../../menu.html">Inicio </a>  
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../clientes/clientes.html">Clientes</a>
                         </li>
-                        <li class="nav-item active">
+                        <li class="nav-item ">
                             <a class="nav-link" href="../empleados/empleados.html">Empleados</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="../usuarios/usuarios.html">Usuarios</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../servicios/servicios.html">Servicios</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../usuarios/usuarios.html">Usuarios</a>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="../facturacion/facturacion.html">Facturación</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../facturacion/facturacion.html">Usuarios</a>
-                        </li>
-                        <li class="nav">
-                            <p class="my-auto align-content-end">User</p>
+                            <a class="nav-link" href="../agendamientos/agendamientos.html">Agendamientos</a>
                         </li>
                     </ul>
-
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                               role="button">Salir <span id="susuario_usuario"></span><span class="caret">
+                                </span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="../../../index.html">Salir</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </nav>
         </header>
 
         <div class="container-fluid">
+            
+            <div class="row">
+                <button type="button" class="btn btn-success invisible" id="btnguardaFactura">Guardar</button>
+                <button type="button" class="btn btn-primary" id="btnnuevo">Nuevo</button>
+                <button type="button" class="btn btn-danger" id="btncancelar">Cancelar</button>
+                <button type="button" class="btn btn-success">Imprimir</button>
+                <button type="button" class="btn btn-success">Success</button>
+            </div>
 
 
-
-            <div class="border rounded border-primary p-3 m-3">
+            <div class="border rounded border-primary p-3 m-3 invisible" id="container-cabecera">
                 <h4>CABECERA</h4>
                 <form id="formCabecera">
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="numero_facturacion">numero factura</label>
-                            <input type="text" class="form-control" id="numero_facturacion" name="numero_facturacion" value="001-001-0000000">
+                            <input type="text" class="form-control" id="numero_facturacion" name="numero_facturacion" value="001-001-0000000" pattern="\d{3}-\d{3}-\d{5}">
                             <input type="text" class="form-control" id="idfacturacion" name="idfacturacion">
                         </div>
                         <div class="form-group col-md-3">
@@ -109,7 +128,7 @@
             </div>
 
 
-            <div class=" border rounded border-primary p-3 m-3 container-detalle" id="container-detalle">
+            <div class=" border rounded border-primary p-3 m-3 container-detalle invisible" id="container-detalle">
                 <h4>DETALLE</h4>
 
                 <form id="formDetalle">
@@ -129,15 +148,21 @@
                             <label for="precio">Precio</label>
                             <input type="text" class="form-control" disabled id="precio" >
                         </div>
-                        <div class="form-group col-md-3">
-                            <label for="inputEmail4">Agregar</label>
+                        <div class="form-group col-md-1 text-center">
+                            <label for="btnagregar">Agregar</label>
                             <div class="w-auto"></div>
                             <input type="button" class="btn btn-primary" id="btnagregar" value="Agregar" disabled>
+                        </div>
+                        <div class="form-group col-md-2 text-center">
+                            <label for="btnguardar">Guardar Detalle</label>
+                            <div class="w-auto"></div>
+                            <input type="button" class="btn btn-primary" id="btnguardar" value="Guardar" disabled>
                         </div>
 
                     </div>
                 </form>
                 <form id="tabla">
+                    
                     <div class="row table-responsive">
                         <table class="table table-striped table-bordered ml-2" id="test">
                             <thead class="thead-dark">
@@ -160,7 +185,7 @@
             </div>
         </div>
 
-        <!-- Modal 1-->
+        <!-- Modal 1 clientes-->
         <div class="modal fade" id="myModal1"  data-keyboard="false" tabindex="-1"
              aria-labelledby="staticBackdropLabel1" aria-hidden="true">
             <div class="modal-dialog">
@@ -178,15 +203,11 @@
 
 
                             <div class="input-group col-12  ml-auto">
-                                <input type="text" class="form-control" id="bcli_nombre" name="bcli_nombre" placeholder="Buscar clientes">
-                                <div class="input-group-append">
-                                    <button class="btn btn-success" type="button" id="botonBuscarClientes">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </div>
+                                <input type="text" class="form-control invisible" id="bcli_nombre" name="bcli_nombre" placeholder="Buscar clientes">
                             </div>
                         </form>
-                        <!--tabla mascotas-->
+                        <!--tabla clientes-->
+                        <input type="text" class="col" id="myInput" onkeyup="myFunctionCliente()" placeholder="Buscar por clientes..">
                         <div class="table-responsive" id="resultadoClientes">
                             <table id="tablaClientes" class="table table-hover">
                                 <thead>
@@ -213,7 +234,7 @@
             </div>
         </div>
 
-        <!-- Modal 2-->
+        <!-- Modal 2 servicios-->
         <div class="modal fade" id="myModal2"  data-keyboard="false" tabindex="-1"
              aria-labelledby="staticBackdropLabel1" aria-hidden="true">
             <div class="modal-dialog">
@@ -231,18 +252,15 @@
 
 
                             <div class="input-group col-12  ml-auto">
-                                <input type="text" class="form-control" id="bcli_descripcion" name="bcli_descripcion" placeholder="Buscar servicios">
-                                <div class="input-group-append">
-                                    <button class="btn btn-success" type="button" id="botonBuscar">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </div>
+                                <input type="text" class="form-control invisible" id="bcli_descripcion" name="bcli_descripcion" placeholder="Buscar servicios">
+                                
                             </div>
                         </form>
                         <form id="formTabla" hidden>
                             <input type="text" id="inputid" name="inputid">
                         </form>
                         <!--tabla servicios-->
+                        <input type="text" class="col" id="myInput2" onkeyup="myFunctionServicio()" placeholder="Buscar por clientes..">
                         <div class="table-responsive" id="resultado">
                             <table id="tablaservicio" class="table table-hover">
                                 <thead>
@@ -267,20 +285,73 @@
                 </div>
             </div>
         </div>
+        <!--modal 3 confirmar cabecera-->
 
+        <div class="modal" id="myModalCabecera" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Guardar Cabecera</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Seguro que desea guardar la cabecera?.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                        <button type="button" class="btn btn-primary" id="confirmar_cabecera">Sí</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!--modal 3 confirmar cabecera-->
+
+        <div class="modal" id="myModalDetalle" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Guardar Detalles</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Seguro que desea guardar los servicios?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                        <button type="button" class="btn btn-primary" id="confirmar_detalle">Sí</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- cdn bootstrap y jquery -->
-        
+
         <script src="../../../js/jquery-3.6.0.min.js" ></script>
         <script src="../../../js/bootstrap.bundle.min.js" ></script>
         <!--notify-->
         <script src="../../../js/notify.js"></script>
         <script src="../facturacion/js/funciones.js"></script>
         <script>
-
+            verificarSesion(true);
 
             $(document).ready(function () {
-
+//                agregar detalle
+                $("#btnnuevo").click(function(){
+                    $("#container-cabecera").removeClass("invisible");
+                    $("#container-detalle").removeClass("invisible");
+                    $("#btnguardaFactura").removeClass("invisible");
+                    $(this).addClass("invisible");
+                });
+                
+                $("#btncancelar").click(function(){
+                    $("#container-cabecera").removeClass("invisible");
+                    $("#container-detalle").removeClass("invisible");
+                });
                 $("#btnagregar").click(function () {
                     agregarDetalleFacturacion();
                     id = $("#idfacturacion").val();
@@ -293,7 +364,7 @@
                     cantidad = $("#cantidad").val();
                     precio = $("#precio").val();
                     iva10 = precio * 0.1;
-
+                    $('#btnguardar').removeAttr('disabled');
                     $("#test>tbody").append(`<tr>
                                                 <td>${cantidad}</td>
                                                 <td>${servicio}</td>
@@ -303,7 +374,34 @@
                                                         <i class="fa fa-trash"></i>
                                                     </button></td>
                                               </tr>`)
+                    $("#servicio").val("");
+                    $("#cantidad").val("");
+                    $("#precio").val("");                 
                 });
+            });
+            
+//            confirmar detalle
+            $("#btnguardar").click(function(){
+                 $("#myModalDetalle").modal('show');
+                 $("#confirmar_detalle").click(function(){
+//                     limpiar factura
+                     $("#myModalDetalle").modal('hide');
+                     $("#numero_facturacion").val("");
+                     $("#fecha_facturacion").val("dd/mm/aa");
+                     $("#idfacturacion").val("");
+                     $("#nombre_cliente").val("");
+                     $('#agregar_cabecera').removeAttr('disabled');
+                     
+                     $("#servicio").val("");
+                     $("#cantidad").val("");
+                     $("#precio").val("");
+                     $("#idservicio").val("");
+                     $("#idcabecera").val("");
+                     $("#test>tbody").html("");
+                     $('#btnagregar').attr('disabled','disabled');
+                     $('#btnguardar').attr('disabled','disabled');
+                     $.notify("Factura Guardada", "success");
+                 });
             });
 
 
@@ -317,7 +415,7 @@
                     var rowId = event.target.parentNode.id;
                     var data = document.getElementById(rowId).querySelectorAll(".row-data");
                     var id = data[0].innerHTML;
-                    var nombre = data[1].innerHTML+" "+data[2].innerHTML;
+                    var nombre = data[1].innerHTML + " " + data[2].innerHTML;
                     $("#idcliente").val(id);
                     $("#nombre_cliente").val(nombre);
                     $("#myModal1").modal('hide');
@@ -342,14 +440,19 @@
 
             });
 
+//            guardar cabecera
             $("#agregar_cabecera").click(function () {
-                agregarCabeceraFacturacion();
-                id = $("idfacturacion").val();
-                alert(id);
-                $("idservicio").val(id);
-                //$('#fieldId').attr('disabled', 'disabled');
-                //$('#servicio').removeAttr('disabled'); //Enable
-                
+                $('#myModalCabecera').modal('show');
+                $("#confirmar_cabecera").click(function () {
+                    agregarCabeceraFacturacion();
+                    id = $("idfacturacion").val();
+                    alert(id);
+                    $("idservicio").val(id);
+                    $('#agregar_cabecera').attr('disabled','disabled');
+                    $("#myModalCabecera").modal('hide');
+                    //$('#fieldId').attr('disabled', 'disabled');
+                    //$('#servicio').removeAttr('disabled'); //Enable
+                });
             });
 
             $("#botonBuscar").click(function () {
@@ -380,6 +483,50 @@
                     //$.notify("cancelado", "error");
 
                 });
+            }
+            //buscar en tabla con js
+            function myFunctionCliente() {
+                // Declare variables
+                var input, filter, table, tr, td, i, txtValue;
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("tablaClientes");
+                tr = table.getElementsByTagName("tr");
+
+                // Loop through all table rows, and hide those who don't match the search query
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[1];
+                    if (td) {
+                        txtValue = td.textContent || td.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+            
+            function myFunctionServicio() {
+                // Declare variables
+                var input, filter, table, tr, td, i, txtValue;
+                input = document.getElementById("myInput2");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("tablaservicio");
+                tr = table.getElementsByTagName("tr");
+
+                // Loop through all table rows, and hide those who don't match the search query
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[1];
+                    if (td) {
+                        txtValue = td.textContent || td.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
             }
 
         </script>

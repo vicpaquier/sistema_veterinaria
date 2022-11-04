@@ -1,4 +1,40 @@
 
+function verificarSesion(programa) {
+    var url = '../../../jsp/verificarSesion.jsp';
+    if (programa) {
+        url = '../../../jsp/verificarSesion.jsp';
+    }
+    var datosFormulario = $("#formAcceso").serialize();
+    $.ajax({
+        type: 'POST',
+        url: url,
+        data: datosFormulario,
+        dataType: 'json',
+        beforeSend: function (objeto) {
+            $("#mensajes").html("Enviando datos al Servidor ...");
+        },
+        success: function (json) {
+            if (json.activo === "false") {
+                if (programa) {
+                    location.href = "../../../index.html";
+                } else {
+                    location.href = "index.html";
+                }
+            }
+            $("#snombre_empresa").html(json.nombre_empresa);
+            $("#susuario_usuario").html(json.nombre_usuario);
+            $("#idusuario").html(json.id_usuario);
+            $("#mensajes").html(json.mensaje);
+        },
+        error: function (e) {
+            $("#mensajes").html("ERROR: No se pudo recuperar la sesión.");
+        },
+        complete: function (objeto, exito, error) {
+            if (exito === "success") {
+            }
+        }
+    });
+}
 
 function buscarIdCliente() {
     var datosFormulario = $("#formPrograma").serialize();
@@ -92,7 +128,10 @@ function agregarDetalleFacturacion() {
         success: function (json) {
             
             $("#mensajes").html(json.mensaje);
+            $('#btnguardar').removeAttr('disabled');
             
+            
+            $.notify("Servicio Agregado", "success");
 
         },
         error: function (e) {

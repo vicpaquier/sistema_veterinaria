@@ -30,6 +30,7 @@ function validarAcceso() {
 }
 function validarAccesoAjax() {
     var datosFormulario = $("#formAcceso").serialize();
+    //alert(datosFormulario);
 //alert(datosFormulario);
     $.ajax({
         type: 'POST',
@@ -79,7 +80,7 @@ function verificarSesion(programa) {
                 }
             }
             $("#snombre_empresa").html(json.nombre_empresa);
-            $("#susuario_usuario").html(json.login_usuario);
+            $("#susuario_usuario").html(json.nombre_usuario);
             
             $("#mensajes").html(json.mensaje);
         },
@@ -104,6 +105,32 @@ function cerrarSesion() {
         },
         success: function (json) {
             $("#mensajes").html("Sesión Cerrada.");
+        },
+        error: function (e) {
+            $("#mensajes").html("No se pudo cerrar la sesión.");
+        },
+        complete: function (objeto, exito, error) {
+            if (exito === "success") {
+            }
+        }
+    });
+}
+
+//verificar citas vencidas
+function verificarAgenda() {
+    var datosFormulario = $("#formAcceso").serialize();
+    $.ajax({
+        type: 'POST',
+        url: 'jsp/verificarAgenda.jsp',
+        data: datosFormulario,
+        dataType: 'json',
+        beforeSend: function (objeto) {
+            $("#mensajes").html("Enviando datos al Servidor ...");
+        },
+        success: function (json) {
+            $("#mensajes").html("Sesión Cerrada.");
+            $("#valor").val(json.contenido);
+            $("#contenido").html("Agendamientos vencidos: "+json.contenido);
         },
         error: function (e) {
             $("#mensajes").html("No se pudo cerrar la sesión.");

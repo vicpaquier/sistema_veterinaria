@@ -4,9 +4,12 @@ package controladores;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import modelos.Empleados;
 import modelos.Usuarios;
 import utiles.Conexion;
+import utiles.Utiles;
 
 
 public class UsuariosControlador {
@@ -213,7 +216,7 @@ public class UsuariosControlador {
                     //Integer id = 1;
                     while (rs.next()) {
                         
-                        tabla += "<tr id=" + rs.getString("idempleado") + " >"
+                        tabla += "<tr id=e" + rs.getString("idempleado") + " >"
                                 + "<td class=\"row-data\"  scope=\"row\" name=\"id_tabla" + rs.getString("idempleado") + "\" id=\"id_tabla" + rs.getString("idempleado") + "\">" + rs.getString("idempleado") + "</td>"
                                 + "<td class=\"row-data\" >" + rs.getString("nombre_empleado") + "</td>"
                                 + "<td class=\"row-data\" >" + rs.getString("apellido_empleado") + "</td>";
@@ -233,5 +236,44 @@ public class UsuariosControlador {
         }
         Conexion.cerrar();
         return valor;
+    }
+    
+    public static Usuarios validarAcceso(Usuarios usuario, HttpServletRequest request) {
+        String nombre;
+        String apellido;
+        if (Conexion.conectar()) {
+            try {
+                String sql = "select * from usuarios u, empleados e  "
+                        + "where login_usuario='" + usuario.getLogin_usuario()
+                        + "' and contra_usuario='" + Utiles.md5(Utiles.quitarGuiones(usuario.getContra_usuario())) + "'";
+                try (PreparedStatement ps = Conexion.getConn().prepareStatement(sql)) {
+                    ResultSet rs = ps.executeQuery();
+
+                    System.out.println("---> " + sql);
+                    if (rs.next()) {
+                        HttpSession sesion = request.getSession(true);
+                        
+                        nombre=rs.getString("nombre_empleado");
+                        apellido=rs.getString("apellido_empleado");
+                        
+                        usuario = new Usuarios();
+                        usuario.setIdusuario(rs.getInt("idusuario"));
+                        usuario.setLogin_usuario(rs.getString("login_usuario"));
+                        usuario.setTipo_usuario(rs.getString("tipo_usuario"));
+                        usuario.setContra_usuario(rs.getString("contra_usuario"));
+                        usuario.setNombre_usuario(nombre+" "+apellido);
+                        //usuario.setEmpleados().set;
+                        sesion.setAttribute("usuarioLogueado", usuario);
+                    } else {
+                        usuario = null;
+                    }
+                    ps.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("--> " + ex.getLocalizedMessage());
+            }
+        }
+        Conexion.cerrar();
+        return usuario;
     }
 }

@@ -6,16 +6,18 @@ public class Usuarios {
     private String tipo_usuario;
     private String contra_usuario;
     private String login_usuario;
+    private String nombre_usuario;
     private Empleados empleados;
 
     public Usuarios() {
     }
 
-    public Usuarios(int idusuario, String tipo_usuario, String contra_usuario, String login_usuario, Empleados empleados) {
+    public Usuarios(int idusuario, String tipo_usuario, String contra_usuario, String login_usuario, String nombre_usuario, Empleados empleados) {
         this.idusuario = idusuario;
         this.tipo_usuario = tipo_usuario;
         this.contra_usuario = contra_usuario;
         this.login_usuario = login_usuario;
+        this.nombre_usuario = nombre_usuario;
         this.empleados = empleados;
     }
 
@@ -51,6 +53,14 @@ public class Usuarios {
         this.login_usuario = login_usuario;
     }
 
+    public String getNombre_usuario() {
+        return nombre_usuario;
+    }
+
+    public void setNombre_usuario(String nombre_usuario) {
+        this.nombre_usuario = nombre_usuario;
+    }
+
     public Empleados getEmpleados() {
         return empleados;
     }
@@ -58,7 +68,6 @@ public class Usuarios {
     public void setEmpleados(Empleados empleados) {
         this.empleados = empleados;
     }
-    
-    
+
     
 }
