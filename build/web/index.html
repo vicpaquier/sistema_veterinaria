@@ -28,22 +28,17 @@ and open the template in the editor.
                                         <p class="text-white-50 mb-5">Ingresa tu usuario y contraseña!</p>
 
                                         <div class="form-outline form-white mb-4">
-                                            <input type="text" id="login_usuario" name="login_usuario" class="form-control form-control-lg" placeholder="Email"/>
+                                            <input type="text" id="login_usuario" name="login_usuario" class="form-control form-control-lg" placeholder="Email" required/>
 
                                         </div>
                                         <div class="pt-4"></div>
                                         <div class="form-outline form-white mb-4">
-                                            <input type="password" id="password_usuario" name="password_usuario" class="form-control form-control-lg" placeholder="Contraseña"/>
+                                            <input type="password" id="password_usuario" name="password_usuario" class="form-control form-control-lg" placeholder="Contraseña" required/>
 
                                         </div>
+                                        
                                         <button class="btn btn-outline-light btn-lg px-5" id="botonIngresar" type="button">Ingresar</button>
-
-
-
                                     </div>
-
-
-
                                 </div>
                             </div>
                         </div>
@@ -52,22 +47,33 @@ and open the template in the editor.
             </section>
 
         </form>
-
+        
         <!--<div id="mensajes" class="well well-sm centrado">Mensajes del Sistema</div>-->
         <script src="js/jquery-3.6.0.min.js"></script>
+        <script src="js/validate.js" ></script>
         <script src="js/bootstrap.bundle.min.js" ></script>
         <script src="js/funciones.js"></script>
         <script>
 
-
+            $(document).ready(function(){
+                $("#login_usuario").focus();
+                var form = $("#formAcceso");
+                form.validate();
+                $("#botonIngresar").on("click", function () {
+                if(form.valid()){
+                    validarAcceso();
+                }
+                
+            });
+            });
             cerrarSesion();
             
-            $("usuario_usuario").focus();
-            siguienteCampo("usuario_usuario", "#password_usuario", false);
-            siguienteCampo("password_usuario", "#botonIngresar", false);
-            $("#botonIngresar").on("click", function () {
-                validarAcceso();
-            });
+            
+            
+//            $("usuario_usuario").focus();
+//            siguienteCampo("usuario_usuario", "#password_usuario", false);
+//            siguienteCampo("password_usuario", "#botonIngresar", false);
+            
 
 
         </script>

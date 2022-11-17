@@ -1,3 +1,65 @@
+function buscarNombreAgendamiento() {
+    var datosFormulario = $("#formBuscarFactura").serialize();
+    $.ajax({
+        type: 'POST',
+        url: '../facturacion/jsp/buscarFactura.jsp',
+        data: datosFormulario,
+        dataType: 'json',
+        beforeSend: function (objeto) {
+            $("#mensajes").html("Enviando datos al Servidor ...");
+            $("#contenidoBusquedaFactura").css("display", "none");
+            //$("#formProgramaFactura").validate();
+        },
+        success: function (json) {
+            $("#mensajes").html(json.mensaje);
+            $("#contenidoBusquedaFactura").html(json.contenido);
+            
+            $("#contenidoBusquedaFactura").fadeIn("slow");
+            
+        },
+        error: function (e) {
+            $("#mensajes").html("No se pudo buscar registros.");
+        },
+        complete: function (objeto, exito, error) {
+            if (exito === "success") {
+            }
+        }
+    });
+}
+
+function eliminarDetalle() {
+    var datosFormulario = $("#tabla").serialize();
+    
+    $.ajax({
+        type: 'POST',
+        url: '../facturacion/jsp/eliminar.jsp',
+        data: datosFormulario,
+        dataType: 'json',
+        beforeSend: function (objeto) {
+            //$.notify("Enviando datos al servidor", "success");
+            
+        },
+        success: function (json) {
+            $("#mensajes").html(json.mensaje);
+            
+            limpiarFormulario();
+            $("#id_rubro").focus();
+            $("#id_rubro").select();
+            $.notify(json.mensaje, json.tipo);
+            
+
+        },
+        error: function (e) {
+            $("#mensajes").html("No se pudo modificar los datos.");
+            $.notify("Error del servidor", "error");
+        },
+        complete: function (objeto, exito, error) {
+            if (exito === "success") {
+            }
+        }
+    });
+}
+
 
 function verificarSesion(programa) {
     var url = '../../../jsp/verificarSesion.jsp';
@@ -388,6 +450,43 @@ function generarIdMascota() {
         complete: function (objeto, exito, error) {
             if (exito === "success") {
             }
+        }
+    });
+}
+
+function cobrarFactura() {
+    var datosFormulario = $("#formCobro").serialize();
+    alert(datosFormulario);
+    
+    $.ajax({
+        type: 'POST',
+        url: '../facturacion/jsp/cobrarFactura.jsp',
+        data: datosFormulario,
+        dataType: 'json',
+        beforeSend: function (objeto) {
+            $("#mensajes").html("Enviando datos al Servidor ...");
+            //validarFormulario();
+        },
+        success: function (json) {
+            $("#mensajes").html(json.mensaje);
+            $("#estado_facturacion").val(json.estado);
+            //limpiarFormulario();
+            $("#id_Agendamiento").focus();
+            $("#id_Agendamiento").select();
+            
+            
+            if(json.tipo==="success"){
+                $.notify(json.mensaje, "success");
+            }else{
+                $.notify(json.mensaje, "error");
+            }
+        },
+        error: function (e) {
+            $("#mensajes").html("No se pudo modificar los datos.");
+            $.notify("No se pudo agregar", "error");
+        },
+        complete: function (objeto, exito, error) {
+            $("#id_Agendamiento").focus();
         }
     });
 }

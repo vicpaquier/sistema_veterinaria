@@ -56,6 +56,24 @@ public class DetalleFacturacionControlador {
 //        Conexion.cerrar();
 //        return detallepedido;
 //    }
+    
+        public static boolean modificar_estado(DetallesFacturacion detallesfacturacion){
+        boolean valor=false;
+        if(Conexion.conectar()){
+        String sql="update facturacion set estado_facturacion='COBRADO'"
+                    + "where idfacturacion="+detallesfacturacion.getFacturacion().getId_facturacion();
+            System.out.println("sql_estado-->: "+sql);
+            try{
+                Conexion.getSt().executeUpdate(sql);
+                valor=true;
+            }catch(SQLException ex){
+                System.err.println("Error:"+ex);
+            }
+        }
+        return valor;
+    }
+    
+    
     public static boolean agregar(DetallesFacturacion detallesfacturacion) {
         boolean valor = false;
         if (Conexion.conectar()) {
@@ -302,28 +320,28 @@ public class DetalleFacturacionControlador {
 //        return valor;
 //    }
 //
-//    public static boolean eliminar(DetallesPedidos detallepedido) {
-//        boolean valor = false;
-//        if (Conexion.conectar()) {
-//            String sql = "delete from detallespedidos where id_detallepedido=?";
-//            try (PreparedStatement ps = Conexion.getConn().prepareStatement(sql)) {
-//                ps.setInt(1, detallepedido.getId_detallepedido());
-//                ps.executeUpdate();
-//                ps.close();
-//                Conexion.getConn().commit();
-//                valor = true;
-//            } catch (SQLException ex) {
-//                System.out.println("--> " + ex.getLocalizedMessage());
-//                try {
-//                    Conexion.getConn().rollback();
-//                } catch (SQLException ex1) {
-//                    System.out.println("--> " + ex1.getLocalizedMessage());
-//                }
-//            }
-//        }
-//        Conexion.cerrar();
-//        return valor;
-//    }
+    public static boolean eliminar(DetallesFacturacion detallesfacturacion) {
+        boolean valor = false;
+        if (Conexion.conectar()) {
+            String sql = "delete from detallefacturacion where iddetallefacturacion=?";
+            try (PreparedStatement ps = Conexion.getConn().prepareStatement(sql)) {
+                ps.setInt(1, detallesfacturacion.getIddetallefacturacion());
+                ps.executeUpdate();
+                ps.close();
+                Conexion.getConn().commit();
+                valor = true;
+            } catch (SQLException ex) {
+                System.out.println("--> " + ex.getLocalizedMessage());
+                try {
+                    Conexion.getConn().rollback();
+                } catch (SQLException ex1) {
+                    System.out.println("--> " + ex1.getLocalizedMessage());
+                }
+            }
+        }
+        Conexion.cerrar();
+        return valor;
+    }
 //    
 //    public static boolean eliminarArticuloPedido(Pedidos pedido) {
 //        boolean valor = false;
