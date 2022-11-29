@@ -1,5 +1,4 @@
 
-
 <%@page import="controladores.DetalleFacturacionControlador"%>
 <%@page import="modelos.DetallesFacturacion"%>
 <%@page import="controladores.EmpleadosControlador"%>
@@ -7,8 +6,7 @@
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="java.sql.ResultSet"%>
 <%
-    int id = Integer.parseInt(request.getParameter("iddetalle"));
-
+    int id = Integer.parseInt(request.getParameter("inputidDetalle"));
     //System.out.println(idempleado);
     String tipo = "error";
     String mensaje = "Datos no eliminados.";

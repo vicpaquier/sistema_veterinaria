@@ -1,3 +1,41 @@
+function verificarSesion(programa) {
+    var url = 'jsp/verificarSesion.jsp';
+    if (true) {
+        url = '../../../../jsp/verificarSesion.jsp';
+    }
+    var datosFormulario = $("#formAcceso").serialize();
+    $.ajax({
+        type: 'POST',
+        url: url,
+        data: datosFormulario,
+        dataType: 'json',
+        beforeSend: function (objeto) {
+            $("#mensajes").html("Enviando datos al Servidor ...");
+        },
+        success: function (json) {
+            if (json.activo === "false") {
+                if (programa) {
+                    location.href = "../../../index.html";
+                } else {
+                    location.href = "index.html";
+                }
+            }
+            $("#snombre_empresa").html(json.nombre_empresa);
+            $("#susuario_usuario").html(json.activo);
+            $("#idusuario3").html(json.idusuario);
+            $("#usu_form").val(json.idusuario);
+            $("#mensajes").html(json.mensaje);
+        },
+        error: function (e) {
+            $("#mensajes").html("ERROR: No se pudo recuperar la sesión.");
+        },
+        complete: function (objeto, exito, error) {
+            if (exito === "success") {
+            }
+        }
+    });
+}
+
 function buscarCliente() {
     var datosFormulario = $("#formBuscarCliente").serialize();
     

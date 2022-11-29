@@ -1,3 +1,45 @@
+function buscarIdFacturacion() {
+    var datosFormulario = $("#formCabecera").serialize();
+
+    $.ajax({
+        type: 'POST',
+        url: '../clientes/jsp/buscarId.jsp',
+        data: datosFormulario,
+        dataType: 'json',
+        beforeSend: function (objeto) {
+            $("#mensajes").html("Enviando datos al Servidor ...");
+        },
+        success: function (json) {
+            $("#mensajes").html(json.mensaje);
+            $("#idcliente").val(json.idcliente);
+            $("#nombre_cliente").val(json.nombre_cliente);
+            $("#apellido_cliente").val(json.apellido_cliente);
+            $("#celular_cliente").val(json.celular_cliente);
+            $("#ruc_cliente").val(json.ruc_cliente);
+            $("#direccion_cliente").val(json.direccion_cliente);
+            if (json.nuevo === "true") {
+                $("#botonAgregar").prop('disabled', false);
+                $("#botonModificar").prop('disabled', true);
+                $("#botonEliminar").prop('disabled', true);
+                //siguienteCampo("#nombre_rubro", "#botonAgregar", true);
+            } else {
+                $("#botonAgregar").prop('disabled', true);
+                //alert("hola");
+                $("#botonModificar").prop('disabled', false);
+                $("#botonEliminar").prop('disabled', false);
+               // siguienteCampo("#nombre_rubro", "#botonModificar", true);
+            }
+        },
+        error: function (e) {
+            $("#mensajes").html("No se pudo recuperar los datos.");
+        },
+        complete: function (objeto, exito, error) {
+            if (exito === "success") {
+            }
+        }
+    });
+}
+
 function buscarNombreAgendamiento() {
     var datosFormulario = $("#formBuscarFactura").serialize();
     $.ajax({
@@ -28,7 +70,7 @@ function buscarNombreAgendamiento() {
 }
 
 function eliminarDetalle() {
-    var datosFormulario = $("#tabla").serialize();
+    var datosFormulario = $("#formDetalle2").serialize();
     
     $.ajax({
         type: 'POST',
@@ -37,7 +79,6 @@ function eliminarDetalle() {
         dataType: 'json',
         beforeSend: function (objeto) {
             //$.notify("Enviando datos al servidor", "success");
-            
         },
         success: function (json) {
             $("#mensajes").html(json.mensaje);
@@ -46,8 +87,6 @@ function eliminarDetalle() {
             $("#id_rubro").focus();
             $("#id_rubro").select();
             $.notify(json.mensaje, json.tipo);
-            
-
         },
         error: function (e) {
             $("#mensajes").html("No se pudo modificar los datos.");
@@ -85,8 +124,11 @@ function verificarSesion(programa) {
             }
             $("#snombre_empresa").html(json.nombre_empresa);
             $("#susuario_usuario").html(json.nombre_usuario);
-            $("#idusuario").html(json.id_usuario);
+            $("#idusuario").val(json.id_usuario);
+            $("#usuario_nombre").val(json.id_usuario);
             $("#mensajes").html(json.mensaje);
+            $("#usu_form2").val(json.nombre_usuario);
+            $("#usu_form").val(json.idusuario);
         },
         error: function (e) {
             $("#mensajes").html("ERROR: No se pudo recuperar la sesión.");

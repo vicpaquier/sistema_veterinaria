@@ -57,12 +57,15 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="../../../index.html">Salir</a></li>
                             </ul>
+                            
+                            
                         </li>
                     </ul>
                 </div>
             </nav>
         </header>
-
+        <input type="text" id="usu_form" class="invisible">
+        <input type="text" id="usu_form2" class="invisible">
         <div class="container-fluid">
             
             <div class="row">
@@ -127,11 +130,11 @@
                         <div class="form-group col-md-3">
                             <label for="fecha_facturacion">fecha</label>
                             <div class="w-auto"></div>
-                            <input type="date"  id="fecha_facturacion" name="fecha_facturacion">
+                            <input type="text"  class="form-control" id="fecha_facturacion" name="fecha_facturacion" disabled value="">
                         </div>
                         <div class="form-group col-md-3">
                             <label for="estado_facturacion">estado</label>
-                            <input type="text" class="form-control text-danger text-center" id="estado_facturacion"  value="PENDIENTE" name="estado_facturacion" readonly>
+                            <input type="text" class="form-control text-danger text-center" id="estado_facturacion"  value="PENDIENTE" name="estado_facturacion" disabled>
                         </div>
                     </div>
 
@@ -142,8 +145,9 @@
                             <input type="text" class="invisible" id="idcliente" name="idcliente">
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="inputPassword4">idusuaario</label>
-                            <input type="text" class="form-control" id="idusuario" name="idusuario">
+                            <label for="inputPassword4">Empleado</label>
+                            <input type="text" class="form-control" id="usuario_nombre" name="idusuario"disabled>
+                            <input type="text" class="form-control invisible" id="idusuario" name="idusuario">
                         </div>
                         <div class="form-group col-md-3">
                             <label for="customRadioInline1">Condición</label>
@@ -178,15 +182,15 @@
                         <div class="form-group col-md-3">
                             <label for="servicio">Servicio</label>
                             <input type="text" class="form-control" id="servicio" name="servicio" disabled>
-                            <input type="text" class="form-control " id="idservicio" name="idservicio">
-                            <input type="text" class="form-control " id="idcabecera" name="idcabecera">
+                            <input type="text" class="form-control invisible" id="idservicio" name="idservicio">
+                            <input type="text" class="form-control invisible " id="idcabecera" name="idcabecera">
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="cantidad">cantidad</label>
+                            <label for="cantidad">Cantidad</label>
                             <input type="text" class="form-control" id="cantidad" name="cantidad" disabled>
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="precio">Precio</label>
+                            <label for="precio">Precio Unitario</label>
                             <input type="text" class="form-control" disabled id="precio" >
                         </div>
                         <div class="form-group col-md-1 text-center">
@@ -203,7 +207,7 @@
                     </div>
                 </form>
                 <form id="tabla">
-                    <input type="text" id="iddetalle" name="iddetalle">
+                    
                     <div class="row table-responsive">
                         <table class="table table-striped table-bordered ml-2" id="test">
                             <thead class="thead-dark">
@@ -425,7 +429,10 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p>Seguro que desea Cobrar la factura?.</p>
+                        <p>Seguro que desea ELIMINAR la factura?.</p>
+                        <form id="formDetalle2">
+                            <input type="text" id="inputidDetalle" name="inputidDetalle">
+                        </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
@@ -434,8 +441,7 @@
                 </div>
             </div>
         </div>
-
-        <!-- cdn bootstrap y jquery -->
+        <!-- cdn bootstrap y jquery botonBuscar-->
 
         <script src="../../../js/jquery-3.6.0.min.js" ></script>
         <script src="../../../js/bootstrap.bundle.min.js" ></script>
@@ -447,6 +453,7 @@
             
             $(document).ready(function () {
                 
+                
                 //obtener fecha actual del sistema
                 var now = new Date();
                 var month = (now.getMonth() + 1);
@@ -457,7 +464,9 @@
                     day = "0" + day;
                 var today = now.getFullYear() + '-' + month + '-' + day;
                 $('#bag_nombre2').val(today);
+                $('#fecha_facturacion').val(today);
                 buscarNombreAgendamiento();
+                
 //                agregar detalle
                 $("#btnnuevo").click(function(){
                     $("#container-cabecera").removeClass("invisible");
@@ -469,8 +478,14 @@
                     $("#formBuscarFactura").addClass("invisible");
                     $("#resultadoFactura").addClass("invisible");
                     $(this).addClass("invisible");
+                    var a = $("#usu_form").val();
+                    var b = $("#usu_form2").val();
+
+                    $("#usuario_nombre").val(b);
+                    $("#idusuario").val(a);
                 });
                 
+                //cerrar factura
                 $("#btncancelar").click(function(){
                     $("#idfacturacion").val("");
                     $("#btnguardaFactura").addClass("invisible");
@@ -499,13 +514,14 @@
                     precio = $("#precio").val();
                     iva10 = precio * cantidad;
                     $('#btnguardar').removeAttr('disabled');
+                    $('#btnagregar').attr('disabled','disabled');
                     if(servicio!==''){
-                        $("#test>tbody").append(`<tr>
+                        $("#test>tbody").append(`<tr id='${idservicio}'>
                                                 <td class="invisible" id="${idservicio}">${idservicio}</td>
-                                                <td>${cantidad}</td>
-                                                <td>${servicio}</td>
-                                                <td>${precio}</td>
-                                                <td>${iva10}</td>
+                                                <td class="row-data">${cantidad}</td>
+                                                <td class="row-data">${servicio}</td>
+                                                <td class="row-data">${precio}</td>
+                                                <td class="row-data">${iva10}</td>
                                                 <td class="text-center"><button class="btn btn-danger" type="button" id="botonBuscar" onclick="del()">
                                                         <i class="fa fa-trash"></i>
                                                     </button></td>
@@ -518,10 +534,15 @@
             });
             
             
-//            buscar factura
-$("#botonBuscar").click(function(){
-    buscarNombreAgendamiento();
-});
+            //seleccionar primer valor del row
+            
+            
+            
+
+            //            buscar factura
+            $("#botonBuscar").click(function(){
+                buscarNombreAgendamiento();
+            });
             
 //            imprimir factura
             $("#botonImprimir").on('click',function(){
@@ -532,28 +553,7 @@ $("#botonBuscar").click(function(){
                     window.open(jsp+"?l="+l+"&id="+id+"&h="+h);
                 });
             
-//            seleccionar primer valor del row
-            function del() {
-                var rowId = event.target.parentNode.parentNode.parentNode.id;
-                alert(rowId);
-                //var data = document.getElementById(rowId).querySelectorAll(".row-data");
-                //var id = data[0].innerHTML;
-                //var nombre = data[1].innerHTML;
-                $("#inputid").val(rowId);
 
-                //alert
-                $("#ModalDelete").modal('show');
-
-                $("#confirmarDelete").click(function () {
-                    $("#ModalDelete").modal('hide');
-                    eliminarDetalle();
-                });
-                $("#cancelarDelete").click(function () {
-                    $("#ModalDelete").modal('hide');
-                    //$.notify("cancelado", "error");
-                    
-                });
-            }
             
 //            confirmar detalle
             $("#btnguardar").click(function(){
@@ -594,6 +594,7 @@ $("#botonBuscar").click(function(){
                     $("#idcliente").val(id);
                     $("#nombre_cliente").val(nombre);
                     $("#myModal1").modal('hide');
+                    //$('#btnagregar').attr('disabled','disabled');
                 });
             });
 
@@ -610,7 +611,9 @@ $("#botonBuscar").click(function(){
                     $("#idservicio").val(id);
                     $("#servicio").val(nombre);
                     $("#precio").val(precio);
+                    $("#cantidad").val("1");
                     $("#myModal2").modal('hide');
+                    $('#btnagregar').removeAttr('disabled');
                 });
 
             });
@@ -637,11 +640,13 @@ $("#botonBuscar").click(function(){
 
 //            eliminar detalle
             function del() {
-                var rowId = event.target.parentNode.parentNode.parentNode.parentNode.id;
-                var data = document.getElementById(rowId).querySelectorAll(".row-data");
-                var id = data[0].innerHTML;
-                var nombre = data[1].innerHTML;
-                $("#inputid").val(id);
+                var rowId = event.target.parentNode.parentNode.parentNode.id;
+                
+                //var data = document.getElementById(rowId).querySelectorAll(".row-data");
+                //var id = data[0].innerHTML;
+                //var nombre = data[1].innerHTML;
+                
+                $("#inputidDetalle").val(rowId);
 
                 //alert
                 $("#ModalDelete").modal('show');
@@ -649,9 +654,9 @@ $("#botonBuscar").click(function(){
                 $("#confirmarDelete").click(function () {
                     $("#ModalDelete").modal('hide');
 
-                    eliminarEmpleado();
+                    
                     //$.notify(""+nombre+" eliminado correctamente", "success");
-                    buscarNombreUsuario()();
+                    eliminarDetalle();
                 });
                 $("#cancelarDelete").click(function () {
                     $("#ModalDelete").modal('hide');

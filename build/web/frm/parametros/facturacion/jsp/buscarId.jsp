@@ -1,10 +1,13 @@
 
-<%@page import="controladores.ClientesControlador"%>
+<%@page import="modelos.Usuarios"%>
+<%@page import="utiles.Utiles"%>
+<%@page import="controladores.FacturacionControlador"%>
+<%@page import="modelos.Facturacion"%>
 <%@page import="modelos.Clientes"%>
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="java.sql.ResultSet"%>
 <%
-    int idcliente = Integer.parseInt(request.getParameter("idcliente"));
+    int idfactura = Integer.parseInt(request.getParameter("idfacturacion"));
     
    
     String tipo = "error";
@@ -12,7 +15,7 @@
     String nuevo = "true";
     Clientes cliente=new Clientes();
     cliente.setIdcliente(idcliente);
-    cliente=ClientesControlador.buscarId(cliente);
+    cliente=FacturacionControlador.buscarId(cliente);
     if(cliente.getIdcliente()!=0){
         tipo="success";
         mensaje="Datos encontrados";

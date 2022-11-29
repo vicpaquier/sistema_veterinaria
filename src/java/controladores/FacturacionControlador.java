@@ -6,13 +6,48 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import modelos.Clientes;
 //import modelos.Facturacion;
 //import modelos.Usuarios;
 import modelos.Facturacion;
+import modelos.Usuarios;
 import utiles.Conexion;
 //import utiles.Utiles;
 
 public class FacturacionControlador {
+    
+    public static Facturacion buscarIdCabecera(Facturacion facturacion) {
+        if (Conexion.conectar()) {
+            String sql = "select * from facturacion f,usuarios,clientes where f.idfacturacion ='" + facturacion.getId_facturacion()+ "'limit 1";
+                
+            System.out.println("dasd"+sql);
+            
+            try {
+                ResultSet rs = Conexion.getSt().executeQuery(sql);
+                Usuarios usuario = new Usuarios();
+                Clientes cliente = new Clientes();
+                if (rs.next()) {
+                    
+                    cliente.setIdcliente(rs.getInt("idcliente"));
+                    cliente.setNombre_cliente(rs.getString("nombre_cliente"));
+                    cliente.setApellido_cliente(rs.getString("apellido_cliente"));
+                    usuario.setLogin_usuario(rs.getString("celular_cliente"));
+                    usuario.setIdusuario(rs.getString("direccion_cliente"));
+                    cliente.setRuc_cliente(rs.getString("ruc_cliente"));
+                } else {
+                    cliente.setIdcliente(0);
+                    cliente.setNombre_cliente(" ");
+                    cliente.setApellido_cliente(" ");
+                    cliente.setCelular_cliente(" ");
+                    cliente.setDireccion_cliente(" ");
+                    cliente.setRuc_cliente(" ");
+                }
+            } catch (SQLException ex) {
+                System.err.println("Error:" + ex);
+            }
+        }
+        return cliente;
+    }
     
     public static String buscarNombre(String fecha_desde, String fecha_hasta, int pagina) {
         //int offset = (pagina - 1) * Utiles.REGISTROS_PAGINA;
@@ -143,7 +178,7 @@ public class FacturacionControlador {
         if (Conexion.conectar()) {
             System.out.println("condicion---"+facturacion.getCondicion_facturacion());
             String sql = "insert into facturacion(idcliente, idusuario, fecha_facturacion, numero_facturacion, estado_facturacion,  condicion_facturacion) "
-                    + "values("+facturacion.getCliente().getIdcliente()+","+facturacion.getUsuario().getIdusuario()+",'"+facturacion.getFecha_facturacion()+"','"+facturacion.getNumero_facturacion()+"','"+facturacion.getEstado_facturacion()+"','"+facturacion.getCondicion_facturacion()+"');";
+                    + "values("+facturacion.getCliente().getIdcliente()+","+facturacion.getUsuario().getIdusuario()+",CURRENT_DATE,'"+facturacion.getNumero_facturacion()+"','"+facturacion.getEstado_facturacion()+"','"+facturacion.getCondicion_facturacion()+"');";
             System.out.println("--> " + sql);
             try {
                 Conexion.getSt().executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);

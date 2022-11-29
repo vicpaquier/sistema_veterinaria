@@ -60,7 +60,7 @@ function validarAccesoAjax() {
 function verificarSesion(programa) {
     var url = 'jsp/verificarSesion.jsp';
     if (programa) {
-        url = '../../../jsp/verificarSesion.jsp';
+        url = '../../../../jsp/verificarSesion.jsp';
     }
     var datosFormulario = $("#formAcceso").serialize();
     $.ajax({
@@ -81,8 +81,11 @@ function verificarSesion(programa) {
             }
             $("#snombre_empresa").html(json.nombre_empresa);
             $("#susuario_usuario").html(json.nombre_usuario);
-            
+            $("#idusuario").val(json.id_usuario);
+            $("#usuario_nombre").val(json.id_usuario);
             $("#mensajes").html(json.mensaje);
+            $("#usu_form").val(json.idusuario);
+            $("#usu_form2").val(json.nombre_usuario);
         },
         error: function (e) {
             $("#mensajes").html("ERROR: No se pudo recuperar la sesión.");
@@ -117,7 +120,7 @@ function cerrarSesion() {
 }
 
 //verificar citas vencidas
-function verificarAgenda() {
+function  verificarAgenda() {
     var datosFormulario = $("#formAcceso").serialize();
     $.ajax({
         type: 'POST',

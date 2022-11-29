@@ -19,6 +19,7 @@
         nuevo="false";
     }
     JSONObject obj = new JSONObject();
+    
     obj.put("tipo", tipo);
     obj.put("mensaje", mensaje);
     obj.put("nuevo", nuevo);

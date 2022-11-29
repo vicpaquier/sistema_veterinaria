@@ -56,19 +56,19 @@ where detallefacturacion."idfacturacion" = $P{factura}]]>
 				<reportElement x="72" y="0" width="249" height="15" uuid="b34588c9-c645-4f84-bafd-2422c7ff0971"/>
 				<textFieldExpression><![CDATA[$F{servicios_descripcion_servicio}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="#,##0">
 				<reportElement x="325" y="0" width="55" height="15" uuid="c6f9c425-5ac1-4e89-aa69-62b193c44464"/>
 				<textFieldExpression><![CDATA[$F{servicios_precio_servicio}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="#,##0">
 				<reportElement x="384" y="0" width="50" height="15" uuid="81770921-d503-4c67-8d32-69c3336cc8d8"/>
 				<textFieldExpression><![CDATA[$F{exenta}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="#,##0">
 				<reportElement x="438" y="0" width="54" height="15" uuid="bae2a2c2-e6a1-4443-91ec-7d7b130665d1"/>
 				<textFieldExpression><![CDATA[$F{cinco}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="#,##0">
 				<reportElement x="496" y="0" width="59" height="15" uuid="b86727c2-df72-4cdb-a192-14b1a296c89d"/>
 				<textFieldExpression><![CDATA[$F{diez}]]></textFieldExpression>
 			</textField>

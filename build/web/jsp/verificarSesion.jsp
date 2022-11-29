@@ -18,10 +18,13 @@ nombre_usuario = usuarioLogueado.getNombre_usuario();
 activo = "true";
 mensaje="La sesión está abierta.";
 }
+
+//String parseado = Integer.toString(id_usuario);
+//out.println("---> "+id_usuario);
 JSONObject obj = new JSONObject();
 obj.put("mensaje", mensaje);
 obj.put("activo", activo);
-obj.put("id_usuario",id_usuario);
+obj.put("idusuario",id_usuario);
 obj.put("login_usuario",login_usuario);
 obj.put("nombre_usuario",nombre_usuario);
 out.print(obj);
