@@ -17,9 +17,8 @@
     
     usuario.setIdusuario(idusuario);
     usuario.setNombre_usuario(nombre_usuario);
-    usuario.setApellido_usuario(apellido_usuario);
-    usuario.setCelular_usuario(celular_usuario);
-    usuario.setRuc_usuario(ruc_usuario);
+    usuario.setLogin_usuario(celular_usuario);
+    usuario.setContra_usuario(ruc_usuario);
     
     if (UsuariosControlador.modificar(usuario)) {
         tipo = "success";

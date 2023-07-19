@@ -48,8 +48,8 @@ LIMIT 1]]>
 				<textFieldExpression><![CDATA[$F{total_factura}]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0">
-				<reportElement x="492" y="1" width="63" height="19" uuid="2983452e-48d8-4ff4-b309-6a564aba2e28"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<reportElement x="489" y="1" width="63" height="19" uuid="2983452e-48d8-4ff4-b309-6a564aba2e28"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{total_factura}]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0">

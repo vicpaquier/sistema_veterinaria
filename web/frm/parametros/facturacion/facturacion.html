@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
         <link href="../../../css/estilos.css" rel="stylesheet" type="text/css"/>
         <link href="../../../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <title>pruebas</title>
+        <title>Sistema Veterinaria</title>
     </head>
 
     <body>
@@ -27,9 +27,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="../../../menu.html">Inicio </a>  
-                        </li>
+                        
                         <li class="nav-item">
                             <a class="nav-link" href="../clientes/clientes.html">Clientes</a>
                         </li>
@@ -57,8 +55,8 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="../../../index.html">Salir</a></li>
                             </ul>
-                            
-                            
+
+
                         </li>
                     </ul>
                 </div>
@@ -67,25 +65,21 @@
         <input type="text" id="usu_form" class="invisible">
         <input type="text" id="usu_form2" class="invisible">
         <div class="container-fluid">
-            
+
             <div class="row">
-                <button type="button" class="btn btn-success invisible" id="btnguardaFactura">Guardar</button>
-                <button type="button" class="btn btn-primary" id="btnnuevo">Nuevo</button>
-                <button type="button" class="btn btn-danger invisible" id="btncancelar">Cancelar</button>
-                <button type="button" class="btn btn-success" id="botonImprimir">Imprimir</button>
-                <button type="button" class="btn btn-success">Success</button>
-            </div>
-            
-            <form id="formBuscarFactura" class="row my-3">
-                <input type="hidden"  id="bpaginaf" name="bpaginaf" value="1" />
-
-                
-
-                <div class="input-group  col-8 ml-auto">
-                    <label>Desde</label>
-                    <input type="date" class="" id="bag_nombre" name="bag_nombre" value="2022-01-01" required>
-                    <label>Hasta</label>
-                    <input type="date" class="" id="bag_nombre2" name="bag_nombre2" value="" required>
+                <div class="col-3 my-2">
+                    <button type="button" class="btn btn-success invisible" id="btnguardaFactura">Guardar</button>
+                    <button type="button" class="btn btn-success" id="btnnuevo">Nuevo</button>
+                    <button type="button" class="btn btn-danger invisible" id="btncancelar">Cancelar</button>
+                    <button type="button" class="btn btn-success invisible" id="botonImprimir">Imprimir</button>
+                </div>
+                <form id="formBuscarFactura" class="row my-2 ml-5">
+                <input type="hidden"  id="bpaginaf" name="bpaginaf" value="1"/>
+                <div class="input-group   ml-5">
+                    <label class="m-2">Desde</label>
+                    <input class="m-2" type="date" class="" id="bag_nombre" name="bag_nombre" value="2022-01-01" required>
+                    <label class="m-2">Hasta </label>
+                    <input class="m-2" type="date" class="" id="bag_nombre2" name="bag_nombre2" value="" required>
                     <button class="btn btn-success" type="button" id="botonBuscar">
                         <i class="fa fa-search"></i>
                     </button>
@@ -93,11 +87,14 @@
                 </div>
 
             </form>
+            </div>
+
             
+
             <!--tabla busqueda factura-->
             <input type="text" class="col" id="myInputFactura" onkeyup="myFunction()" placeholder="Buscar por clientes..">
             <div class="table-responsive" id="resultadoFactura">
-                
+
                 <table id="tablaFactura" class="table">
                     <thead>
                         <tr>
@@ -114,8 +111,8 @@
                     </tbody>
                 </table>
             </div>
-            
-            
+
+
             <!--factura-->
             <div class="border rounded border-primary p-3 m-3 invisible" id="container-cabecera">
                 <h4>CABECERA</h4>
@@ -123,17 +120,17 @@
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="numero_facturacion">numero factura</label>
+                            <label for="numero_facturacion">NUMERO FACTURA</label>
                             <input type="text" class="form-control" id="numero_facturacion" name="numero_facturacion" value="001-001-0000000" pattern="\d{3}-\d{3}-\d{5}">
-                            <input type="text" class="form-control" id="idfacturacion" name="idfacturacion">
+                            <input type="text" class="form-control invisible" id="idfacturacion" name="idfacturacion">
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="fecha_facturacion">fecha</label>
+                            <label for="fecha_facturacion">FECHA</label>
                             <div class="w-auto"></div>
                             <input type="text"  class="form-control" id="fecha_facturacion" name="fecha_facturacion" disabled value="">
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="estado_facturacion">estado</label>
+                            <label for="estado_facturacion">ESTADO</label>
                             <input type="text" class="form-control text-danger text-center" id="estado_facturacion"  value="PENDIENTE" name="estado_facturacion" disabled>
                         </div>
                     </div>
@@ -145,12 +142,12 @@
                             <input type="text" class="invisible" id="idcliente" name="idcliente">
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="inputPassword4">Empleado</label>
+                            <label for="inputPassword4">EMPLEADO</label>
                             <input type="text" class="form-control" id="usuario_nombre" name="idusuario"disabled>
                             <input type="text" class="form-control invisible" id="idusuario" name="idusuario">
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="customRadioInline1">Condición</label>
+                            <label for="customRadioInline1">CONDICION</label>
                             <div class="w-auto"></div>
                             <div class="custom-control custom-radio custom-control-inline">
                                 <input type="radio" id="rbncontado" name="rbncondicion" value="CONTADO"
@@ -166,8 +163,8 @@
                     </div>
 
                     <input type="button" class="btn btn-primary" name="agregar_cabecera" id="agregar_cabecera" value="Agregar Cabecera">
-                    
-                    <input type="button" class="btn btn-primary" name="cobrar" id="cobrar" value="Cobrar">
+
+                    <input type="button" class="btn btn-primary invisible" name="cobrar" id="cobrar" value="Cobrar">
 
                 </form>
             </div>
@@ -198,16 +195,16 @@
                             <div class="w-auto"></div>
                             <input type="button" class="btn btn-primary" id="btnagregar" value="Agregar" disabled>
                         </div>
-                        <div class="form-group col-md-2 text-center">
+<!--                        <div class="form-group col-md-2 text-center">
                             <label for="btnguardar">Guardar Detalle</label>
                             <div class="w-auto"></div>
                             <input type="button" class="btn btn-primary" id="btnguardar" value="Guardar" disabled>
-                        </div>
+                        </div>-->
 
                     </div>
                 </form>
                 <form id="tabla">
-                    
+
                     <div class="row table-responsive">
                         <table class="table table-striped table-bordered ml-2" id="test">
                             <thead class="thead-dark">
@@ -216,7 +213,6 @@
                                     <th scope="col" class="w-50">DESCRIPCION</th>
                                     <th scope="col" class="text-center" >PRECIO UNITARIO</th>
                                     <th scope="col" class="text-center" >IVA 10%</th>
-                                    <th scope="col" class="w-auto text-center">ELIMINAR</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -298,7 +294,7 @@
 
                             <div class="input-group col-12  ml-auto">
                                 <input type="text" class="form-control invisible" id="bcli_descripcion" name="bcli_descripcion" placeholder="Buscar servicios">
-                                
+
                             </div>
                         </form>
                         <form id="formTabla" hidden>
@@ -351,7 +347,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!--modal 4 confirmar detalle-->
 
         <div class="modal" id="myModalDetalle" tabindex="-1">
@@ -373,7 +369,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!--modal 5 confirmar cobro-->
         <div class="modal" id="myModalCobro" tabindex="-1">
             <div class="modal-dialog">
@@ -385,29 +381,29 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p>Seguro que desea Cobrar la factura?.</p>
-                        
                         <form id="formCobro">
+                            <input type="text" class="invisible" id="idfacturacion_cobro" name="idfacturacion_cobro">
+                            <input type="text" class="invisible" id="estado" name="estado">
+                            <input type="text" class="invisible" id="usuario" name="usuario">
                             <div class="form-row">
-                        
-                        <div class="form-group col-md-3">
-                            <input type="text" id="idfacturacion_cobro" name="idfacturacion_cobro">
-                            <input type="text" id="estado" name="estado">
-                            <input type="text" id="usuario" name="usuario">
-                            <label >Condición</label>
-                            <div class="w-auto"></div>
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="rbntarjeta" name="rbnmetodo_pago" value="TARJETA"
-                                       class="custom-control-input" checked>
-                                <label class="custom-control-label" for="rbntarjeta">TARJETA</label>
+
+
+                                <div class="form-group col-md-12 ">
+                                    <label >Método de Pago</label>
+                                    <div class="w-auto"></div>
+                                    <div class="custom-control custom-radio custom-control-inline ">
+                                        <input type="radio" id="rbntarjeta" name="rbnmetodo_pago" value="TARJETA"
+                                               class="custom-control-input" checked>
+                                        <label class="custom-control-label" for="rbntarjeta">TARJETA</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline ">
+                                        <input type="radio" id="rbnefectivo" name="rbnmetodo_pago" value="EFECTIVO"
+                                               class="custom-control-input">
+                                        <label class="custom-control-label" for="rbnefectivo">EFECTIVO</label>
+                                    </div>
+                                </div>
+
                             </div>
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="rbnefectivo" name="rbnmetodo_pago" value="EFECTIVO"
-                                       class="custom-control-input">
-                                <label class="custom-control-label" for="rbnefectivo">EFECTIVO</label>
-                            </div>
-                        </div>
-                    </div>
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -417,7 +413,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!--modal 6 confirmar eliminar detalle-->
         <div class="modal" id="ModalDelete" tabindex="-1">
             <div class="modal-dialog">
@@ -449,308 +445,334 @@
         <script src="../../../js/notify.js"></script>
         <script src="../facturacion/js/funciones.js"></script>
         <script>
-            verificarSesion(true);
-            
-            $(document).ready(function () {
-                
-                
-                //obtener fecha actual del sistema
-                var now = new Date();
-                var month = (now.getMonth() + 1);
-                var day = now.getDate();
-                if (month < 10)
-                    month = "0" + month;
-                if (day < 10)
-                    day = "0" + day;
-                var today = now.getFullYear() + '-' + month + '-' + day;
-                $('#bag_nombre2').val(today);
-                $('#fecha_facturacion').val(today);
-                buscarNombreAgendamiento();
-                
-//                agregar detalle
-                $("#btnnuevo").click(function(){
-                    $("#container-cabecera").removeClass("invisible");
-                    $("#container-detalle").removeClass("invisible");
-                    $("#btnguardaFactura").removeClass("invisible");
-                    $("#btncancelar").removeClass("invisible");
-                    
-                    $("#myInputFactura").addClass("invisible");
-                    $("#formBuscarFactura").addClass("invisible");
-                    $("#resultadoFactura").addClass("invisible");
-                    $(this).addClass("invisible");
-                    var a = $("#usu_form").val();
-                    var b = $("#usu_form2").val();
+                            verificarSesion(true);
 
-                    $("#usuario_nombre").val(b);
-                    $("#idusuario").val(a);
-                });
-                
-                //cerrar factura
-                $("#btncancelar").click(function(){
-                    $("#idfacturacion").val("");
-                    $("#btnguardaFactura").addClass("invisible");
-                    $("#container-cabecera").addClass("invisible");
-                    $("#container-detalle").addClass("invisible");
-                    $(this).addClass("invisible");
-                    
-                    $("#btnnuevo").removeClass("invisible");
-                    $("#myInputFactura").removeClass("invisible");
-                    $("#formBuscarFactura").removeClass("invisible");
-                    $("#resultadoFactura").removeClass("invisible");
-                });
-                $("#btnagregar").click(function () {
-                    agregarDetalleFacturacion();
-                    id = $("#idfacturacion").val();
-                    alert(id);
-                    $("#idcabecera").val(id);
-                    let servicio;
-                    let cantidad;
-                    let precio;
-                    let idservicio;
-                    let iva10;
-                    idservicio = $("#idservicio").val();
-                    servicio = $("#servicio").val();
-                    cantidad = $("#cantidad").val();
-                    precio = $("#precio").val();
-                    iva10 = precio * cantidad;
-                    $('#btnguardar').removeAttr('disabled');
-                    $('#btnagregar').attr('disabled','disabled');
-                    if(servicio!==''){
-                        $("#test>tbody").append(`<tr id='${idservicio}'>
+                            $(document).ready(function () {
+
+
+                                //obtener fecha actual del sistema
+                                var now = new Date();
+                                var month = (now.getMonth() + 1);
+                                var day = now.getDate();
+                                if (month < 10)
+                                    month = "0" + month;
+                                if (day < 10)
+                                    day = "0" + day;
+                                var today = now.getFullYear() + '-' + month + '-' + day;
+                                $('#bag_nombre2').val(today);
+                                $('#fecha_facturacion').val(today);
+                                buscarNombreAgendamiento();
+                            
+//                agregar detalle
+                                $("#btnnuevo").click(function () {
+                                    $("#cobrar").addClass("invisible");
+                                    $("#container-cabecera").removeClass("invisible");
+                                    $("#container-detalle").removeClass("invisible");
+                                    $("#btnguardaFactura").removeClass("invisible");
+                                    $("#btncancelar").removeClass("invisible");
+
+                                    $("#myInputFactura").addClass("invisible");
+                                    $("#formBuscarFactura").addClass("invisible");
+                                    $("#resultadoFactura").addClass("invisible");
+                                    $(this).addClass("invisible");
+                                    var a = $("#usu_form").val();
+                                    var b = $("#usu_form2").val();
+
+                                    $("#usuario_nombre").val(b);
+                                    $("#idusuario").val(a);
+                                });
+
+                                //cerrar factura
+                                $("#btncancelar").click(function () {
+                                    $("#idfacturacion").val("");
+                                    $("#btnguardaFactura").addClass("invisible");
+                                    $("#container-cabecera").addClass("invisible");
+                                    $("#container-detalle").addClass("invisible");
+                                    $(this).addClass("invisible");
+
+                                    $("#btnnuevo").removeClass("invisible");
+                                    $("#myInputFactura").removeClass("invisible");
+                                    $("#formBuscarFactura").removeClass("invisible");
+                                    $("#resultadoFactura").removeClass("invisible");
+                                });
+                                //agregar servicios
+                                $("#btnagregar").click(function () {
+                                    
+  
+    
+                                    $("#cobrar").removeClass("invisible");
+                                    agregarDetalleFacturacion();
+                                    id = $("#idfacturacion").val();
+                                    //alert(id);
+                                    $("#idcabecera").val(id);
+                                    let servicio;
+                                    let cantidad;
+                                    let precio;
+                                    let idservicio;
+                                    let iva10;
+                                    idservicio = $("#idservicio").val();
+                                    servicio = $("#servicio").val();
+                                    cantidad = $("#cantidad").val();
+                                    precio = $("#precio").val();
+                                    iva10 = precio * cantidad;
+                                    $('#btnguardar').removeAttr('disabled');
+                                    $('#btnagregar').attr('disabled', 'disabled');
+                                    if (servicio !== '') {
+                                        $("#test>tbody").append(`<tr id='${idservicio}'>
                                                 <td class="invisible" id="${idservicio}">${idservicio}</td>
                                                 <td class="row-data">${cantidad}</td>
                                                 <td class="row-data">${servicio}</td>
                                                 <td class="row-data">${precio}</td>
                                                 <td class="row-data">${iva10}</td>
-                                                <td class="text-center"><button class="btn btn-danger" type="button" id="botonBuscar" onclick="del()">
-                                                        <i class="fa fa-trash"></i>
-                                                    </button></td>
                                               </tr>`)
-                    }
-                    $("#servicio").val("");
-                    $("#cantidad").val("");
-                    $("#precio").val("");                 
-                });
-            });
-            
-            
-            //seleccionar primer valor del row
-            
-            
-            
+                                    }
+                                    $("#servicio").val("");
+                                    $("#cantidad").val("");
+                                    $("#precio").val("");
+                                });
+                            });
 
-            //            buscar factura
-            $("#botonBuscar").click(function(){
-                buscarNombreAgendamiento();
-            });
-            
+
+                            //seleccionar primer valor del row
+
+
+
+
+                            //            buscar factura
+                            $("#botonBuscar").click(function () {
+                                buscarNombreAgendamiento();
+                            });
+
 //            imprimir factura
-            $("#botonImprimir").on('click',function(){
-                    var l=$("#listado").val();
-                    var id=$("#idfacturacion").val();
-                    var h=$("#hasta_id").val();
-                    var jsp="jsp/reportes.jsp";
-                    window.open(jsp+"?l="+l+"&id="+id+"&h="+h);
-                });
-            
+                            $("#botonImprimir").on('click', function () {
+                                var l = $("#listado").val();
+                                var id = $("#idfacturacion").val();
+                                var h = $("#hasta_id").val();
+                                var jsp = "jsp/reportes.jsp";
+                                window.open(jsp + "?l=" + l + "&id=" + id + "&h=" + h);
+                            });
 
-            
+
+
 //            confirmar detalle
-            $("#btnguardar").click(function(){
-                 $("#myModalDetalle").modal('show');
-                 $("#confirmar_detalle").click(function(){
+                            $("#btnguardaFactura").click(function () {
+                                
+                                $("#myModalDetalle").modal('show');
+                                $("#confirmar_detalle").click(function () {
+                                    $("#idfacturacion").val("");
+                                    $("#btnguardaFactura").addClass("invisible");
+                                    $("#container-cabecera").addClass("invisible");
+                                    $("#container-detalle").addClass("invisible");
+                                    $(this).addClass("invisible");
+
+                                    $("#btnnuevo").removeClass("invisible");
+                                    $("#myInputFactura").removeClass("invisible");
+                                    $("#formBuscarFactura").removeClass("invisible");
+                                    $("#resultadoFactura").removeClass("invisible");
+                                    
 //                     limpiar factura
-                     $("#myModalDetalle").modal('hide');
-                     $("#numero_facturacion").val("");
-                     $("#fecha_facturacion").val("dd/mm/aa");
-                     $("#idfacturacion").val("");
-                     $("#nombre_cliente").val("");
-                     $('#agregar_cabecera').removeAttr('disabled');
-                     
-                     $("#servicio").val("");
-                     $("#cantidad").val("");
-                     $("#precio").val("");
-                     $("#idservicio").val("");
-                     $("#idcabecera").val("");
-                     $("#test>tbody").html("");
-                     $('#btnagregar').attr('disabled','disabled');
-                     $('#btnguardar').attr('disabled','disabled');
-                     $.notify("Factura Guardada", "success");
-                 });
-            });
+                                    $("#myModalDetalle").modal('hide');
+                                    $("#numero_facturacion").val("001-001-0000000");
+                                    $("#fecha_facturacion").val("dd/mm/aa");
+                                    $("#idfacturacion").val("");
+                                    $("#nombre_cliente").val("");
+                                    $('#agregar_cabecera').removeAttr('disabled');
+
+                                    $("#servicio").val("");
+                                    $("#cantidad").val("");
+                                    $("#precio").val("");
+                                    $("#idservicio").val("");
+                                    $("#idcabecera").val("");
+                                    $("#test>tbody").html("");
+                                    $('#btnagregar').attr('disabled', 'disabled');
+                                    $('#btnguardar').attr('disabled', 'disabled');
+                                    $.notify("Factura Guardada", "success");
+                                });
+                            });
 
 
 
 //            abrir modal clientes
-            $("#nombre_cliente").click(function () {
-                buscarCliente();
-                $("#myModal1").modal('show');
-                $('#tablaClientes tbody').on('click', 'tr', function () {
-                    //$(this).addClass("selected");
-                    var rowId = event.target.parentNode.id;
-                    var data = document.getElementById(rowId).querySelectorAll(".row-data");
-                    var id = data[0].innerHTML;
-                    var nombre = data[1].innerHTML + " " + data[2].innerHTML;
-                    $("#idcliente").val(id);
-                    $("#nombre_cliente").val(nombre);
-                    $("#myModal1").modal('hide');
-                    //$('#btnagregar').attr('disabled','disabled');
-                });
-            });
+                            $("#nombre_cliente").click(function () {
+                                buscarCliente();
+                                $("#myModal1").modal('show');
+                                $('#tablaClientes tbody').on('click', 'tr', function () {
+                                    //$(this).addClass("selected");
+                                    var rowId = event.target.parentNode.id;
+                                    var data = document.getElementById(rowId).querySelectorAll(".row-data");
+                                    var id = data[0].innerHTML;
+                                    var nombre = data[1].innerHTML + " " + data[2].innerHTML;
+                                    $("#idcliente").val(id);
+                                    $("#nombre_cliente").val(nombre);
+                                    $("#myModal1").modal('hide');
+                                    //$('#btnagregar').attr('disabled','disabled');
+                                });
+                            });
 
 //            abrir modal servicios
-            $("#servicio").click(function () {
-                buscarServicio();
-                $("#myModal2").modal('show');
-                $('#tablaservicio tbody').on('click', 'tr', function () {
-                    var rowId = event.target.parentNode.id;
-                    var data = document.getElementById(rowId).querySelectorAll(".row-data");
-                    var id = data[0].innerHTML;
-                    var nombre = data[1].innerHTML;
-                    var precio = data[2].innerHTML;
-                    $("#idservicio").val(id);
-                    $("#servicio").val(nombre);
-                    $("#precio").val(precio);
-                    $("#cantidad").val("1");
-                    $("#myModal2").modal('hide');
-                    $('#btnagregar').removeAttr('disabled');
-                });
+                            $("#servicio").click(function () {
+                                buscarServicio();
+                                $("#myModal2").modal('show');
+                                $('#tablaservicio tbody').on('click', 'tr', function () {
+                                    var rowId = event.target.parentNode.id;
+                                    var data = document.getElementById(rowId).querySelectorAll(".row-data");
+                                    var id = data[0].innerHTML;
+                                    var nombre = data[1].innerHTML;
+                                    var precio = data[2].innerHTML;
+                                    $("#idservicio").val(id);
+                                    $("#servicio").val(nombre);
+                                    $("#precio").val(precio);
+                                    $("#cantidad").val("1");
+                                    $("#myModal2").modal('hide');
+                                    $('#btnagregar').removeAttr('disabled');
+                                });
 
-            });
+                            });
 
 //            guardar cabecera
-            $("#agregar_cabecera").click(function () {
-                $('#myModalCabecera').modal('show');
-                $("#confirmar_cabecera").click(function () {
-                    agregarCabeceraFacturacion();
-                    id = $("idfacturacion").val();
-                    alert(id);
-                    $("idservicio").val(id);
-                    $('#agregar_cabecera').attr('disabled','disabled');
-                    $("#myModalCabecera").modal('hide');
-                    //$('#fieldId').attr('disabled', 'disabled');
-                    //$('#servicio').removeAttr('disabled'); //Enable
-                });
-            });
+                            $("#agregar_cabecera").click(function () {
+                                $('#myModalCabecera').modal('show');
+                                $("#confirmar_cabecera").click(function () {
+                                    agregarCabeceraFacturacion();
+                                    id = $("idfacturacion").val();
+                                    //alert(id);
+                                    $("idservicio").val(id);
+                                    $('#agregar_cabecera').attr('disabled', 'disabled');
+                                    $("#myModalCabecera").modal('hide');
+                                    //$('#fieldId').attr('disabled', 'disabled');
+                                    //$('#servicio').removeAttr('disabled'); //Enable
+                                });
+                            });
 
-            $("#botonBuscar").click(function () {
-                buscarServicio();
-            });
+                            $("#botonBuscar").click(function () {
+                                buscarServicio();
+                            });
 
 
 //            eliminar detalle
-            function del() {
-                var rowId = event.target.parentNode.parentNode.parentNode.id;
-                
-                //var data = document.getElementById(rowId).querySelectorAll(".row-data");
-                //var id = data[0].innerHTML;
-                //var nombre = data[1].innerHTML;
-                
-                $("#inputidDetalle").val(rowId);
+                            function del() {
+                                var rowId = event.target.parentNode.parentNode.parentNode.id;
 
-                //alert
-                $("#ModalDelete").modal('show');
+                                //var data = document.getElementById(rowId).querySelectorAll(".row-data");
+                                //var id = data[0].innerHTML;
+                                //var nombre = data[1].innerHTML;
 
-                $("#confirmarDelete").click(function () {
-                    $("#ModalDelete").modal('hide');
+                                $("#inputidDetalle").val(rowId);
 
-                    
-                    //$.notify(""+nombre+" eliminado correctamente", "success");
-                    eliminarDetalle();
-                });
-                $("#cancelarDelete").click(function () {
-                    $("#ModalDelete").modal('hide');
-                    //$.notify("cancelado", "error");
+                                //alert
+                                $("#ModalDelete").modal('show');
 
-                });
-            }
-            
-            //abrir modal cobros
-            $("#cobrar").click(function () {
-                //buscarCliente();
-                id = $("#idfacturacion").val();
-                estado = $("#estado_facturacion").val();
-                usuario = $("#idusuario").val();
-                $("#idfacturacion_cobro").val(id);
-                $("#estado").val(estado);
-                $("#usuario").val(usuario);
-                $("#myModalCobro").modal('show');
-                $("#confirmar_cobro").click(function () {
-                    cobrarFactura();
-                    $("#myModalCobro").modal('hide');
-                    
-                });   
-            });
-            
-            
-            //buscar en tabla con js
-            function myFunction() {
-                // Declare variables
-                var input, filter, table, tr, td, i, txtValue;
-                input = document.getElementById("myInputFactura");
-                filter = input.value.toUpperCase();
-                table = document.getElementById("tablaFactura");
-                tr = table.getElementsByTagName("tr");
+                                $("#confirmarDelete").click(function () {
+                                    $("#ModalDelete").modal('hide');
 
-                // Loop through all table rows, and hide those who don't match the search query
-                for (i = 0; i < tr.length; i++) {
-                    td = tr[i].getElementsByTagName("td")[2];
-                    if (td) {
-                        txtValue = td.textContent || td.innerText;
-                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                            tr[i].style.display = "";
-                        } else {
-                            tr[i].style.display = "none";
-                        }
-                    }
-                }
-            }
-            
-            //buscar en tabla con js
-            function myFunctionCliente() {
-                // Declare variables
-                var input, filter, table, tr, td, i, txtValue;
-                input = document.getElementById("myInput");
-                filter = input.value.toUpperCase();
-                table = document.getElementById("tablaClientes");
-                tr = table.getElementsByTagName("tr");
 
-                // Loop through all table rows, and hide those who don't match the search query
-                for (i = 0; i < tr.length; i++) {
-                    td = tr[i].getElementsByTagName("td")[1];
-                    if (td) {
-                        txtValue = td.textContent || td.innerText;
-                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                            tr[i].style.display = "";
-                        } else {
-                            tr[i].style.display = "none";
-                        }
-                    }
-                }
-            }
-            
-            //buscar en tabla con js
-            function myFunctionServicio() {
-                // Declare variables
-                var input, filter, table, tr, td, i, txtValue;
-                input = document.getElementById("myInput2");
-                filter = input.value.toUpperCase();
-                table = document.getElementById("tablaservicio");
-                tr = table.getElementsByTagName("tr");
+                                    //$.notify(""+nombre+" eliminado correctamente", "success");
+                                    eliminarDetalle();
+                                });
+                                $("#cancelarDelete").click(function () {
+                                    $("#ModalDelete").modal('hide');
+                                    //$.notify("cancelado", "error");
 
-                // Loop through all table rows, and hide those who don't match the search query
-                for (i = 0; i < tr.length; i++) {
-                    td = tr[i].getElementsByTagName("td")[1];
-                    if (td) {
-                        txtValue = td.textContent || td.innerText;
-                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                            tr[i].style.display = "";
-                        } else {
-                            tr[i].style.display = "none";
-                        }
-                    }
-                }
-            }
+                                });
+                            }
+
+                            //abrir modal cobros
+                            $("#cobrar").click(function () {
+                                //buscarCliente();
+                                id = $("#idfacturacion").val();
+                                estado = $("#estado_facturacion").val();
+                                usuario = $("#idusuario").val();
+                                $("#idfacturacion_cobro").val(id);
+                                $("#estado").val(estado);
+                                $("#usuario").val(usuario);
+                                $("#myModalCobro").modal('show');
+                                $("#confirmar_cobro").click(function () {
+                                    cobrarFactura();
+                                    $("#myModalCobro").modal('hide');
+
+                                });
+                            });
+
+
+                            //buscar en tabla con js
+                            function myFunction() {
+                                // Declare variables
+                                var input, filter, table, tr, td, i, txtValue;
+                                input = document.getElementById("myInputFactura");
+                                filter = input.value.toUpperCase();
+                                table = document.getElementById("tablaFactura");
+                                tr = table.getElementsByTagName("tr");
+
+                                // Loop through all table rows, and hide those who don't match the search query
+                                for (i = 0; i < tr.length; i++) {
+                                    td = tr[i].getElementsByTagName("td")[2];
+                                    if (td) {
+                                        txtValue = td.textContent || td.innerText;
+                                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                            tr[i].style.display = "";
+                                        } else {
+                                            tr[i].style.display = "none";
+                                        }
+                                    }
+                                }
+                            }
+
+                            //buscar en tabla con js
+                            function myFunctionCliente() {
+                                // Declare variables
+                                var input, filter, table, tr, td, i, txtValue;
+                                input = document.getElementById("myInput");
+                                filter = input.value.toUpperCase();
+                                table = document.getElementById("tablaClientes");
+                                tr = table.getElementsByTagName("tr");
+
+                                // Loop through all table rows, and hide those who don't match the search query
+                                for (i = 0; i < tr.length; i++) {
+                                    td = tr[i].getElementsByTagName("td")[1];
+                                    if (td) {
+                                        txtValue = td.textContent || td.innerText;
+                                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                            tr[i].style.display = "";
+                                        } else {
+                                            tr[i].style.display = "none";
+                                        }
+                                    }
+                                }
+                            }
+
+                            //buscar en tabla con js
+                            function myFunctionServicio() {
+                                // Declare variables
+                                var input, filter, table, tr, td, i, txtValue;
+                                input = document.getElementById("myInput2");
+                                filter = input.value.toUpperCase();
+                                table = document.getElementById("tablaservicio");
+                                tr = table.getElementsByTagName("tr");
+
+                                // Loop through all table rows, and hide those who don't match the search query
+                                for (i = 0; i < tr.length; i++) {
+                                    td = tr[i].getElementsByTagName("td")[1];
+                                    if (td) {
+                                        txtValue = td.textContent || td.innerText;
+                                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                            tr[i].style.display = "";
+                                        } else {
+                                            tr[i].style.display = "none";
+                                        }
+                                    }
+                                }
+                            }
+                            //imprimir factura en tabla
+                            function imprimir(){
+                                var id = event.target.parentNode.parentNode.parentNode.id;
+                                var l = $("#listado").val();
+                                //var id = $("#idfacturacion").val();
+                                var h = $("#hasta_id").val();
+                                var jsp = "jsp/reportes.jsp";
+                                window.open(jsp + "?l=" + l + "&id=" + id + "&h=" + h);
+                                
+                                
+                            }
 
         </script>
 

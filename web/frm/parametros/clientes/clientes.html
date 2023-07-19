@@ -31,9 +31,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="../../../menu.html">Inicio </a>  
-                        </li>
+                        
                         <li class="nav-item active">
                             <a class="nav-link" href="../clientes/clientes.html">Clientes</a>
                         </li>
@@ -219,7 +217,7 @@
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label>fechanacimiento Mascota</label>
-                                        <input type="text" class="form-control" id="fechanacimiento_mascota" name="fechanacimiento_mascota" required>
+                                        <input type="date" class="form-control" id="fechanacimiento_mascota" name="fechanacimiento_mascota" required>
                                     </div>
 
                                     <input type="text" class="form-control invisible" id="idcliente_mascota" name="idcliente_mascota" required>
@@ -467,7 +465,7 @@
 
                     eliminarCliente();
                     //$.notify(""+nombre+" eliminado correctamente", "success");
-                    buscarNombreCliente()();
+                    buscarNombreCliente();
                 });
                 $("#cancelarDelete").click(function () {
                     $("#ModalDelete").modal('hide');

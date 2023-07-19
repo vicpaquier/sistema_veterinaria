@@ -10,7 +10,7 @@ function buscarIdUsuario() {
         dataType: 'json',
         beforeSend: function (objeto) {
             $("#mensajes").html("Enviando datos al Servidor ...");
-            alert(datosFormulario);
+            //alert(datosFormulario);
         },
         success: function (json) {
             
@@ -74,7 +74,7 @@ function buscarNombreUsuario() {
 }
 function agregarUsuario() {
     var datosFormulario = $("#formPrograma").serialize();
-    alert(datosFormulario);
+    //alert(datosFormulario);
     
     $.ajax({
         type: 'POST',

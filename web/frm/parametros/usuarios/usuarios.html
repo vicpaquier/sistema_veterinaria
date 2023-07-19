@@ -5,9 +5,8 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        <link rel="shortcut icon" href="../../../imagenes/Sin título-3.png"/>
         <link href="../../../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
         <link href="../../../css/estilos.css" rel="stylesheet" type="text/css"/>
@@ -32,9 +31,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="../../../menu.html">Inicio </a>  
-                        </li>
+                        
                         <li class="nav-item">
                             <a class="nav-link" href="../clientes/clientes.html">Clientes</a>
                         </li>
@@ -115,24 +112,32 @@
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label>Contraseña Usuario</label>
-                                        <input type="text" class="form-control" id="contrasena_usuario" name="contrasena_usuario" required>
+                                        <input type="password" class="form-control" id="contrasena_usuario" name="contrasena_usuario" required>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
                                         <label>Tipo usuario</label>
-                                        <input type="text" class="form-control" id="tipo_usuario" name="tipo_usuario" required>
+                                        <input type="hidden" class="form-control" id="tipo_usuario" name="tipo_usuario" >
+                                        <div class="col-auto my-1">
+                                            <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
+                                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                                <option selected>ADMINISTRADOR</option>
+                                                <option value="CAJERO">CAJERO</option>
+                                                <option value="SECRETARIO">SECRETARIO</option>
+                                            </select>
+                                        </div>
                                     </div> 
                                 </div>
                                 <hr>
                                 <h5 class="text-center">Datos del Empleado</h5>
                                 <div class="form-row">
-                                    <label for="idempleado" class="col-6">ID</label>
+<!--                                    <label for="idempleado" class="col-6">ID</label>-->
                                     <label for="nombre_empleado"  class="col-6">Nombre</label>
                                     <div class="form-group input-group col-6">
-                                        <input type="text" class="form-control" id="idempleado" name="idempleado" required>
+                                        <input type="hidden" class="form-control" id="idempleado" name="idempleado">
                                     </div>
-                                    <div class="form-group col-6">
+                                    <div class="form-group col-12">
                                         <input type="text" class="form-control" id="nombre_empleado" name="nombre_empleado" >
                                     </div>
                                 </div>
@@ -156,7 +161,7 @@
                                     <tbody id="contenidoBusquedaEmpleados">
                                     </tbody>
                                 </table>
-                            </div>
+                            </div-->
 
                             <div class="modal-footer form-row">
                                 <div class="form-group align-content-end">
@@ -164,7 +169,7 @@
                                     <button type="submit" id="botonAgregar" class="btn btn-success">Guardar</button>
                                     <button type="submit" id="botonModificar" class="btn btn-primary invisible">Modificar</button>
                                 </div>
-                            </div-->
+                            </div>
 
                         </div>
                     </div>
@@ -214,14 +219,14 @@
                 </div>
             </div>
         </div>
-        
+
         <!--modal empleados-->
         <div class="modal fade" id="myModal2"  data-keyboard="false" tabindex="-1"
              aria-labelledby="staticBackdropLabel1" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel1">Seleccionar Servicios</h5>
+                        <h5 class="modal-title" id="staticBackdropLabel1">Seleccionar Empleados</h5>
                         <button type="button" class="close" id="botonCerrarModal1" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -234,7 +239,7 @@
 
                             <div class="input-group col-12  ml-auto">
                                 <input type="text" class="form-control invisible" id="bcli_descripcion" name="bcli_descripcion" placeholder="Buscar servicios">
-                                
+
                             </div>
                         </form>
                         <form id="formTabla" hidden>
@@ -243,238 +248,238 @@
                         <!--tabla servicios-->
                         <input type="text" class="col" id="myInput2" onkeyup="myFunctionServicio()" placeholder="Buscar por clientes..">
                         <div class="table-responsive " id="resultadoMascotas">
-                                <table id="tablaMascota" class="table ">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col" class="text-center">ID</th>
-                                            <th scope="col" class="text-center">Nombre</th>
-                                            <th scope="col" class="text-center">Apellido</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="contenidoBusquedaEmpleados">
-                                    </tbody>
-                                </table>
-                            </div>
+                            <table id="tablaMascota" class="table ">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="text-center">ID</th>
+                                        <th scope="col" class="text-center">Nombre</th>
+                                        <th scope="col" class="text-center">Apellido</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="contenidoBusquedaEmpleados">
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="modal-footer form-row">
-                            <!--                            <div class="form-group align-content-end">
-                                                            <button type="button" id="botonCancelar" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                                                        </div>-->
-                        </div>
-
                     </div>
+                    <div class="modal-footer form-row">
+                        <!--                            <div class="form-group align-content-end">
+                                                        <button type="button" id="botonCancelar" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                                                    </div>-->
+                    </div>
+
                 </div>
             </div>
         </div>
+    </div>
+
+    
+    
+
+    <!--jquery-->
+
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
 
 
-        <!--jquery-->
+    <!--validate-->
 
-        <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script src="../../../js/validate.js"></script>
+
+    <!--notify-->
+    <script src="../../../js/notify.js"></script>
+
+    <script src="js/funciones.js" ></script>
+    <script src="../../../js/bootstrap.bundle.min.js"></script>
 
 
-        <!--validate-->
+    <script>
 
-        <script src="../../../js/validate.js"></script>
+                            buscarNombreUsuario();
+                            buscarNombreEmpleado();
+                            $(document).ready(function () {
+                                buscarNombreUsuario();
 
-        <!--notify-->
-        <script src="../../../js/notify.js"></script>
 
-        <script src="js/funciones.js" ></script>
-        <script src="../../../js/bootstrap.bundle.min.js"></script>
-
-        
-        <script>
-            
-            buscarNombreUsuario();
-            buscarNombreEmpleado();
-            $(document).ready(function () {
-                buscarNombreUsuario();
-                
-
-            });
+                            });
 
 
 
 //            abrir modal para agregar usuarios
 
-$("#nombre_empleado").click(function(){
-    $("#myModal2").modal('show');
-    $('#tablaMascota tbody').on('click', 'tr', function () {
-                    
-                    var rowId = event.target.parentNode.id;
-                    var data = document.getElementById(rowId).querySelectorAll(".row-data");
-                    var id = data[0].innerHTML;
-                    var nombre = data[1].innerHTML + " " + data[2].innerHTML;
-                    $("#idempleado").val(id);
-                    $("#nombre_empleado").val(nombre);
-                    $("#myModal2").modal('hide');
-                    //alert('You clicked on ' + data[1] + "'s row");
-                });
-    
-});
-            $("#abrirModalUsuario").on('click', function () {
-                
-                validarForm1();
-                //buscarNombreEmpleado();
+                            $("#nombre_empleado").click(function () {
+                                $("#myModal2").modal('show');
+                                $('#tablaMascota tbody').on('click', 'tr', function () {
 
-                $("#botonAgregar").removeClass("invisible");
-                $("#botonModificar").addClass("invisible");
-                $('#botonAgregar').prop('disabled', false);
-                limpiarFormulario();
-                generarId();
+                                    var rowId = event.target.parentNode.id;
+                                    var data = document.getElementById(rowId).querySelectorAll(".row-data");
+                                    var id = data[0].innerHTML;
+                                    var nombre = data[1].innerHTML + " " + data[2].innerHTML;
+                                    $("#idempleado").val(id);
+                                    $("#nombre_empleado").val(nombre);
+                                    $("#myModal2").modal('hide');
+                                    //alert('You clicked on ' + data[1] + "'s row");
+                                });
 
-                
-                
-                $("#myModal1").modal('show');
-                $('#myModal1').modal('handleUpdate');
-            });
+                            });
+                            $("#abrirModalUsuario").on('click', function () {
+
+                                validarForm1();
+                                //buscarNombreEmpleado();
+
+                                $("#botonAgregar").removeClass("invisible");
+                                $("#botonModificar").addClass("invisible");
+                                $('#botonAgregar').prop('disabled', false);
+                                limpiarFormulario();
+                                generarId();
+                                $("#myModal1").modal('show');
+                                $('#myModal1').modal('handleUpdate');
+                            });
 
 
 
 //            focus al primer input
-            $('.modal').on('shown.bs.modal', function () {
-                $(this).find('input:visible:first').focus();
-            });
+                            $('.modal').on('shown.bs.modal', function () {
+                                $(this).find('input:visible:first').focus();
+                            });
 
 //            agregar empleado
-            $("#botonAgregar").on('click', function () {
+                            $("#botonAgregar").on('click', function () {
+                                let a = $("#inlineFormCustomSelect").val();
+                                $("#tipo_usuario").val(a);
+                                if ($("#formPrograma").valid()) {
+                                    agregarUsuario();
+                                    buscarNombreUsuario();
+                                    $("#myModal1").modal('hide');
+                                    buscarNombreUsuario();
+                                    //$.notify("Datos agregados", "success");
 
-                if ($("#formPrograma").valid()) {
-                    agregarUsuario();
-                    $("#myModal1").modal('hide');
-                    buscarNombreUsuario();
-                    //$.notify("Datos agregados", "success");
+                                } else {
+                                    //$.notify("Rellene los datos", "error");
+                                }
 
-                } else {
-                    //$.notify("Rellene los datos", "error");
-                }
-
-            });
+                            });
 
 //            buscar empleado
-            $("#botonBuscar").on("click", function () {
-                $("#contenidoBusqueda").html("");
-                $("#bpagina").val("1");
-                buscarNombreUsuario();
-                $("#bcli_nombre").focus();
-            });
+                            $("#botonBuscar").on("click", function () {
+                                $("#contenidoBusqueda").html("");
+                                $("#bpagina").val("1");
+                                buscarNombreUsuario();
+                                $("#bcli_nombre").focus();
+                            });
 
 //            modificar empleado
-            $("#botonModificar").on("click", function () {
-                if ($("#formPrograma").valid()) {
-                    modificarEmpleado();
-                    $("#myModal1").modal('hide');
-                    buscarNombreUsuario();
-                    //$.notify("Datos modificados", "success");
+                            $("#botonModificar").on("click", function () {
+                                if ($("#formPrograma").valid()) {
+                                    modificarEmpleado();
+                                    $("#myModal1").modal('hide');
+                                    buscarNombreUsuario();
+                                    //$.notify("Datos modificados", "success");
 
-                } else {
-                    //$.notify("Rellene los datos", "error");
-                }
+                                } else {
+                                    //$.notify("Rellene los datos", "error");
+                                }
 
-            });
+                            });
 
 
 
 
 //          abrir modal para modificar empleado
-            function mod() {
-                var table = $('#tablaMascota').DataTable({
+                            function mod() {
+//                                var table = $('#tablaMascota').DataTable({
+//
+//                                });
+                                $('#tablaMascota tbody').on('click', 'tr', function () {
+                                    $(this).addClass("selected");
+                                    var data = table.row(this).data();
+                                    $("#idempleado").val(data[0]);
+                                    $("#nombre_empleado").val(data[1]);
+                                    //alert('You clicked on ' + data[1] + "'s row");
+                                });
+                                //var id = $("#id_empleado");
+                                var rowId = event.target.parentNode.parentNode.parentNode.parentNode.id;
+                                var data = document.getElementById(rowId).querySelectorAll(".row-data");
+                                var id = data[0].innerHTML;
+                                $("#idusuario").val(id);
+                                $("#botonModificar").removeClass("invisible");
+                                $("#botonAgregar").addClass("invisible");
+                                buscarIdUsuario();
+                                $("#myModal1").modal('show');
+                                $('#myModal1').modal('handleUpdate');
+                                validarForm1();
 
-                    
-                });
-                $('#tablaMascota tbody').on('click', 'tr', function () {
-                    $(this).addClass("selected");
-                    var data = table.row(this).data();
-                    $("#idempleado").val(data[0]);
-                    $("#nombre_empleado").val(data[1]);
-                    //alert('You clicked on ' + data[1] + "'s row");
-                });
-                //var id = $("#id_empleado");
-                var rowId = event.target.parentNode.parentNode.parentNode.parentNode.id;
-                var data = document.getElementById(rowId).querySelectorAll(".row-data");
-                var id = data[0].innerHTML;
-                $("#idusuario").val(id);
-                $("#botonModificar").removeClass("invisible");
-                $("#botonAgregar").addClass("invisible");
-                buscarIdUsuario();
-                $("#myModal1").modal('show');
-                $('#myModal1').modal('handleUpdate');
-                validarForm1();
-
-            }
+                            }
 
 
 //            eliminar empleado
-            function del() {
-                var rowId = event.target.parentNode.parentNode.parentNode.parentNode.id;
-                var data = document.getElementById(rowId).querySelectorAll(".row-data");
-                var id = data[0].innerHTML;
-                var nombre = data[1].innerHTML;
-                $("#inputid").val(id);
+                            function del() {
+                                var rowId = event.target.parentNode.parentNode.parentNode.parentNode.id;
+                                var data = document.getElementById(rowId).querySelectorAll(".row-data");
+                                var id = data[0].innerHTML;
+                                var nombre = data[1].innerHTML;
+                                $("#inputid").val(id);
 
-                //alert
-                $("#ModalDelete").modal('show');
+                                //alert
+                                $("#ModalDelete").modal('show');
 
-                $("#confirmarDelete").click(function () {
-                    $("#ModalDelete").modal('hide');
+                                $("#confirmarDelete").click(function () {
+                                    $("#ModalDelete").modal('hide');
 
-                    eliminarEmpleado();
-                    //$.notify(""+nombre+" eliminado correctamente", "success");
-                    buscarNombreUsuario()();
-                });
-                $("#cancelarDelete").click(function () {
-                    $("#ModalDelete").modal('hide');
-                    //$.notify("cancelado", "error");
+                                    eliminarEmpleado();
+                                    //$.notify(""+nombre+" eliminado correctamente", "success");
+                                    buscarNombreUsuario()();
+                                });
+                                $("#cancelarDelete").click(function () {
+                                    $("#ModalDelete").modal('hide');
+                                    //$.notify("cancelado", "error");
 
-                });
+                                });
 
 
 
-            }
+                            }
 
-            function myFunctionServicio() {
-                // Declare variables
-                var input, filter, table, tr, td, i, txtValue;
-                input = document.getElementById("myInput2");
-                filter = input.value.toUpperCase();
-                table = document.getElementById("tablaMascota");
-                tr = table.getElementsByTagName("tr");
+                            function myFunctionServicio() {
+                                // Declare variables
+                                var input, filter, table, tr, td, i, txtValue;
+                                input = document.getElementById("myInput2");
+                                filter = input.value.toUpperCase();
+                                table = document.getElementById("tablaMascota");
+                                tr = table.getElementsByTagName("tr");
 
-                // Loop through all table rows, and hide those who don't match the search query
-                for (i = 0; i < tr.length; i++) {
-                    td = tr[i].getElementsByTagName("td")[1];
-                    if (td) {
-                        txtValue = td.textContent || td.innerText;
-                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                            tr[i].style.display = "";
-                        } else {
-                            tr[i].style.display = "none";
-                        }
-                    }
-                }
-            }
+                                // Loop through all table rows, and hide those who don't match the search query
+                                for (i = 0; i < tr.length; i++) {
+                                    td = tr[i].getElementsByTagName("td")[1];
+                                    if (td) {
+                                        txtValue = td.textContent || td.innerText;
+                                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                            tr[i].style.display = "";
+                                        } else {
+                                            tr[i].style.display = "none";
+                                        }
+                                    }
+                                }
+                            }
 
 
 //            abrir más de dos modales
-            var bootstrapModalCounter = 0; //counter is better then using visible selector
+                            var bootstrapModalCounter = 0; //counter is better then using visible selector
 
-            $(document).ready(function () {
-                $('.modal').on("hidden.bs.modal", function (e) {
-                    --bootstrapModalCounter;
-                    if (bootstrapModalCounter > 0) {
-                        //don't need to recalculate backdrop z-index; already handled by css
-                        //$('.modal-backdrop').first().css('z-index', parseInt($('.modal:visible').last().css('z-index')) - 10);
-                        $('body').addClass('modal-open');
-                    }
-                }).on("show.bs.modal", function (e) {
-                    ++bootstrapModalCounter;
-                    //don't need to recalculate backdrop z-index; already handled by css
-                });
-            });
-        </script>
+                            $(document).ready(function () {
+                                $('.modal').on("hidden.bs.modal", function (e) {
+                                    --bootstrapModalCounter;
+                                    if (bootstrapModalCounter > 0) {
+                                        //don't need to recalculate backdrop z-index; already handled by css
+                                        //$('.modal-backdrop').first().css('z-index', parseInt($('.modal:visible').last().css('z-index')) - 10);
+                                        $('body').addClass('modal-open');
+                                    }
+                                }).on("show.bs.modal", function (e) {
+                                    ++bootstrapModalCounter;
+                                    //don't need to recalculate backdrop z-index; already handled by css
+                                });
+                            });
+    </script>
 
 
-    </body>
+</body>
 
 </html>

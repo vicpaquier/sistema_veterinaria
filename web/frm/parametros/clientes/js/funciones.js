@@ -142,7 +142,8 @@ function eliminarCliente() {
             limpiarFormulario();
             $("#id_rubro").focus();
             $("#id_rubro").select();
-            $.notify("Borrado correctamente", "success");
+            //$.notify("Borrado correctamente", "success");
+            $.notify(json.mensaje, json.tipo);
             
 
         },
@@ -228,7 +229,7 @@ function buscarNombreMascota() {
 function agregarMascota() {
     var datosFormulario = $("#formProgramaMascota").serialize();
     
-    alert(datosFormulario);
+    //alert(datosFormulario);
     $.ajax({
         type: 'POST',
         url: '../clientes/jsp/agregarMascota.jsp',

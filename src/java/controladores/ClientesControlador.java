@@ -134,10 +134,12 @@ public class ClientesControlador {
         if(Conexion.conectar()){
             String sql="delete from clientes where idcliente="+cliente.getIdcliente();
             try{
-                Conexion.getSt().executeUpdate(sql);
+                int a = Conexion.getSt().executeUpdate(sql);
+                System.out.println(a);
                 valor=true;
             }catch(SQLException ex){
                 System.err.println("Error:"+ex);
+                valor=false;
             }
         }
         return valor;
@@ -199,9 +201,6 @@ public class ClientesControlador {
                                 + "<td class=\"row-data\" >" + rs.getString("especie_mascota") + "</td>"
                                 + "<td class=\"text-center\">\n" +
 "              <div>\n" +
-"                <button href=\"#\" onclick=\"modMascota()\" class=\"btn btn-info p-0\"  data-toggle=\"modal\"\n" +
-"          data-target=\"#staticBackdrop\" data-placement=\"top\"\n" +
-"                  title=\"Editar mascota\"><i class=\"p-1 bi bi-pencil\"></i></button>\n" +
 "                <button href=\"#\" onclick=\"delMascota()\" class=\"btn btn-danger p-0\" id=\"botonEliminarAlertMascota\" name=\"botonEliminarAlertMascota\" data-toggle=\"tooltip\" data-placement=\"top\"\n" +
 "                  title=\"Eliminar mascota\"><i class=\"p-1 bi bi-trash\"></i></button>\n" +
 "              </div>\n" +

@@ -19,7 +19,7 @@ public class UsuariosControlador {
             String sql = "insert into usuarios(idusuario, tipo_usuario, contra_usuario, empleados_idempleados_fk, login_usuario) "
                     + "values('" + usuario.getIdusuario() + "',"
                     + "'" + usuario.getTipo_usuario()+ "',"
-                    + "'" + usuario.getContra_usuario()+ "',"
+                    + "'" + utiles.Utiles.md5(usuario.getContra_usuario())+ "',"
                     + "'" + usuario.getEmpleados().getIdempleado()+ "',"
                     + "'" + usuario.getLogin_usuario()+ "')";
             try {

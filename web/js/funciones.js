@@ -42,9 +42,9 @@ function validarAccesoAjax() {
         },
         success: function (json) {
             if (json.acceso === "true") {
-                location.href = "menu.html";
+                location.href = "frm/parametros/clientes/clientes.html";
             } else {
-                $("#mensajes").html("Credencial Invalida");
+                $("#mensajes").html("<div class='alert alert-warning mt-2' role='alert'>Credenciales inválidas</div>");
                 setTimeout(' location.reload()', 1500);
             }
         },

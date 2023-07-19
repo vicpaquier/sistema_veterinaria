@@ -17,6 +17,9 @@
     if (ServiciosControlador.eliminar(servicio)) {
         tipo = "success";
         mensaje = "Datos eliminados.";
+    }else{
+        tipo = "error";
+        mensaje = "No se pudo eliminar.";
     }
 
     JSONObject obj = new JSONObject();

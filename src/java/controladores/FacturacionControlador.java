@@ -32,7 +32,7 @@ public class FacturacionControlador {
                     cliente.setNombre_cliente(rs.getString("nombre_cliente"));
                     cliente.setApellido_cliente(rs.getString("apellido_cliente"));
                     usuario.setLogin_usuario(rs.getString("celular_cliente"));
-                    usuario.setIdusuario(rs.getString("direccion_cliente"));
+                    usuario.setIdusuario(rs.getInt("direccion_cliente"));
                     cliente.setRuc_cliente(rs.getString("ruc_cliente"));
                 } else {
                     cliente.setIdcliente(0);
@@ -46,7 +46,7 @@ public class FacturacionControlador {
                 System.err.println("Error:" + ex);
             }
         }
-        return cliente;
+        return facturacion;
     }
     
     public static String buscarNombre(String fecha_desde, String fecha_hasta, int pagina) {
@@ -79,11 +79,9 @@ public class FacturacionControlador {
                                 + "<td class=\"row-data\" >" + rs.getString("estado_facturacion") + "</td>"
                                 + "<td class=\"text-center\">\n"
                                 + "              <div>\n"
-                                + "                <button href=\"#\" value=\"Imprimir\" onclick=\"mod()\" class=\"btn btn-info p-0\"  data-toggle=\"modal\"\n"
+                                +"<button href=\"#\" value=\"Imprimir\" onclick=\"imprimir()\" class=\"btn btn-info p-1\"  data-toggle=\"modal\"\n"
                                 + "          data-target=\"#staticBackdrop\" data-placement=\"top\"\n"
-                                + "                  title=\"Editar datos agendamiento\"><i class=\"p-1 bi bi-pencil\"></i></button>\n"
-                                + "                <button href=\"#\" onclick=\"del()\" class=\"btn btn-danger p-0\" id=\"botonEliminarAlert\" name=\"botonEliminarAlert\" data-toggle=\"tooltip\" data-placement=\"top\"\n"
-                                + "                  title=\"Eliminar datos agendamiento\"><i class=\"p-1 bi bi-trash\"></i></button>\n"
+                                + "                  title=\"Editar datos agendamiento\">IMPRIMIR</button>\n"
                                 + "              </div>\n"
                                 + "            </td>"
                                 + "</tr>";
@@ -178,7 +176,7 @@ public class FacturacionControlador {
         if (Conexion.conectar()) {
             System.out.println("condicion---"+facturacion.getCondicion_facturacion());
             String sql = "insert into facturacion(idcliente, idusuario, fecha_facturacion, numero_facturacion, estado_facturacion,  condicion_facturacion) "
-                    + "values("+facturacion.getCliente().getIdcliente()+","+facturacion.getUsuario().getIdusuario()+",CURRENT_DATE,'"+facturacion.getNumero_facturacion()+"','"+facturacion.getEstado_facturacion()+"','"+facturacion.getCondicion_facturacion()+"');";
+                    + "values("+facturacion.getCliente().getIdcliente()+","+facturacion.getUsuario().getIdusuario()+",CURRENT_DATE,'"+facturacion.getNumero_facturacion()+"','PENDIENTE','"+facturacion.getCondicion_facturacion()+"');";
             System.out.println("--> " + sql);
             try {
                 Conexion.getSt().executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);

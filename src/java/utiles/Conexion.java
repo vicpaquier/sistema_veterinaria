@@ -22,7 +22,7 @@ public class Conexion {
     private static String driver = "org.postgresql.Driver";
     private static String servidor = "localhost";
     private static String puerto = "5432";
-    private static String baseDato = "veterinariaDB";
+    private static String baseDato = "jveterinariaDB";
     private static String usuario = "postgres";
     private static String clave = "1";
     private static Connection conn;

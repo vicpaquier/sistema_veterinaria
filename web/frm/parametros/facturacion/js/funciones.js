@@ -217,7 +217,7 @@ function buscarNombreCliente() {
 
 function agregarDetalleFacturacion() {
     var datosFormulario = $("#formDetalle").serialize();
-    alert(datosFormulario);
+    //(datosFormulario);
     $.ajax({
         type: 'POST',
         url: '../facturacion/jsp/agregarDetalle.jsp',
@@ -250,7 +250,7 @@ function agregarDetalleFacturacion() {
 
 function agregarCabeceraFacturacion() {
     var datosFormulario = $("#formCabecera").serialize();
-    alert(datosFormulario);
+    //(datosFormulario);
     $.ajax({
         type: 'POST',
         url: '../facturacion/jsp/agregar.jsp',
@@ -290,7 +290,7 @@ function agregarCabeceraFacturacion() {
 
 function buscar() {
     var datosFormulario = $("#formBuscar").serialize();
-    alert(datosFormulario);
+    //(datosFormulario);
     $.ajax({
         type: 'POST',
         url: '../facturacion/jsp/buscarServicio.jsp',
@@ -391,7 +391,7 @@ function buscarServicio() {
 function agregarMascota() {
     var datosFormulario = $("#formProgramaMascota").serialize();
 
-    alert(datosFormulario);
+    //(datosFormulario);
     $.ajax({
         type: 'POST',
         url: '../clientes/jsp/agregarMascota.jsp',
@@ -498,7 +498,7 @@ function generarIdMascota() {
 
 function cobrarFactura() {
     var datosFormulario = $("#formCobro").serialize();
-    alert(datosFormulario);
+    //(datosFormulario);
     
     $.ajax({
         type: 'POST',
