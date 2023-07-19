@@ -24,7 +24,7 @@ public class Conexion {
     private static String puerto = "5432";
     private static String baseDato = "jveterinariaDB";
     private static String usuario = "postgres";
-    private static String clave = "1";
+    private static String clave = "123";
     private static Connection conn;
     private static Statement st;
 

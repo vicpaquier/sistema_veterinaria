@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+--><html>
+    <head>
+        <title>NOMBRE EMPRESA</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="css/estilos.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+
+        <form id="formAcceso">
+            <section class="vh-100 gradient-custom">
+                <div class="container py-5 h-100">
+                    <div class="row d-flex justify-content-center align-items-center h-100">
+                        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                            <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                                <div class="card-body p-5 text-center">
+
+                                    <div class="mb-md-5 mt-md-4 pb-5">
+
+                                        <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                                        <p class="text-white-50 mb-5">Ingresa tu usuario y contraseña!</p>
+
+                                        <div class="form-outline form-white mb-4">
+                                            <input type="text" id="login_usuario" name="login_usuario" class="form-control form-control-lg" placeholder="Email" required/>
+
+                                        </div>
+                                        <div class="pt-4"></div>
+                                        <div class="form-outline form-white mb-4">
+                                            <input type="password" id="password_usuario" name="password_usuario" class="form-control form-control-lg" placeholder="Contraseña" required/>
+
+                                        </div>
+                                        
+                                        <button class="btn btn-outline-light btn-lg px-5" id="botonIngresar" type="button">Ingresar</button>
+                                        `<button  class="btn btn-outline-light btn-lg px-5" id="botonIngresar" type="button"><a href="menu.html">irrr</a></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </form>
+        
+        <!--<div id="mensajes" class="well well-sm centrado">Mensajes del Sistema</div>-->
+        <script src="js/jquery-3.6.0.min.js"></script>
+        <script src="js/validate.js" ></script>
+        <script src="js/bootstrap.bundle.min.js" ></script>
+        <script src="js/funciones.js"></script>
+        <script>
+
+            $(document).ready(function(){
+                $("#login_usuario").focus();
+                var form = $("#formAcceso");
+                form.validate();
+                $("#botonIngresar").on("click", function () {
+                if(form.valid()){
+                    validarAcceso();
+                }
+                
+            });
+            });
+            cerrarSesion();
+            
+            
+            
+//            $("usuario_usuario").focus();
+//            siguienteCampo("usuario_usuario", "#password_usuario", false);
+//            siguienteCampo("password_usuario", "#botonIngresar", false);
+            
+
+
+        </script>
+    </body>
+</html>
