@@ -54,8 +54,8 @@ public class FacturacionControlador {
         String valor = "";
         if (Conexion.conectar()) {
             try {
-                String sql = "select total_factura(f.idfacturacion) as subtotales,* from facturacion f, clientes c \n" +
-                "where f.idcliente=c.idcliente and \n" +
+                String sql = "select f.idfacturacion as subtotales,* from facturacion f, clientes c " +
+                "where f.idcliente=c.idcliente and " +
                 "fecha_facturacion BETWEEN '%"+fecha_desde+"%'::DATE AND '%"+fecha_hasta+"%'::DATE ORDER BY fecha_facturacion DESC";
                 // + "upper(cli_nombre) like '%" + nombre.toUpperCase() + "%'"
                 // + " order by id_agendamiento offset " + offset + " limit " + Utiles.REGISTROS_PAGINA;
